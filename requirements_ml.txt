@@ -1,0 +1,4 @@
+scikit-learn>=1.4.0
+joblib>=1.4.0
+transformers>=5.14.1
+torch>=2.0.0

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Content Detector</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #eff3fb;
+        color: #111827;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 34%),
+                    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.14), transparent 28%),
+                    #f8fafc;
+      }
+
+      .page {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .brand {
+        font-size: 1.15rem;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #1d4ed8;
+      }
+
+      .hero {
+        margin: 48px 0 24px;
+        display: grid;
+        gap: 28px;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+      }
+
+      .hero-copy h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 4vw, 4.4rem);
+        line-height: 0.95;
+      }
+
+      .hero-copy p {
+        margin: 20px 0 0;
+        max-width: 680px;
+        font-size: 1.05rem;
+        color: #475569;
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 999px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2563eb, #0ea5e9);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #0f172a;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      .hero-visual {
+        position: relative;
+        overflow: hidden;
+        border-radius: 32px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,250,252,0.95));
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        padding: 32px;
+      }
+
+      .panel {
+        display: grid;
+        gap: 24px;
+      }
+
+      .panel-card {
+        background: white;
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+      }
+
+      .panel-card h2 {
+        margin: 0 0 14px;
+        font-size: 1.35rem;
+      }
+
+      .panel-card p {
+        margin: 0;
+        color: #475569;
+        line-height: 1.75;
+      }
+
+      .form-shell {
+        display: grid;
+        gap: 18px;
+      }
+
+      .message-box {
+        padding: 16px 20px;
+        border-radius: 16px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .message-box.info {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #0369a1;
+      }
+
+      .message-box.warning {
+        background: #fef3c7;
+        border: 1px solid #fde68a;
+        color: #92400e;
+      }
+
+      .message-box.success {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 240px;
+        border-radius: 20px;
+        border: 1px solid #cbd5e1;
+        padding: 20px;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #0f172a;
+        background: #f8fafc;
+        resize: vertical;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .score-badge {
+        margin-left: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #0369a1;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        padding: 12px 16px;
+        border-radius: 16px;
+      }
+
+      .result-card {
+        display: grid;
+        gap: 18px;
+        padding: 24px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(14, 165, 233, 0.12), rgba(255,255,255,0.88));
+        border: 1px solid rgba(14, 165, 233, 0.14);
+      }
+
+      .result-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .result-details {
+        display: grid;
+        gap: 10px;
+      }
+
+      .detail-pill {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: #f8fafc;
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        color: #0f172a;
+        font-size: 0.95rem;
+      }
+
+      .label-low { color: #0f766e; }
+      .label-medium { color: #b45309; }
+      .label-high { color: #dc2626; }
+
+      .feature-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .feature-card {
+        padding: 20px;
+        background: white;
+        border-radius: 22px;
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .feature-card h4 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: #475569;
+        line-height: 1.7;
+      }
+
+      @media (min-width: 900px) {
+        .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="panel">
+        <div class="panel-card">
+          <h2>Paste text for analysis</h2>
+          <p>Enter any assignment or essay excerpt, then hit Analyze to see how closely the writing resembles AI-generated output.</p>
+          <div class="form-shell">
+            <textarea id="textInput" placeholder="Paste assignment text here..."></textarea>
+            <input id="fileInput" type="file" accept=".pdf,.docx,.txt" style="padding:12px 14px; border:1px solid #cbd5e1; border-radius:16px; background:#f8fafc;" />            <div id="messageBox" style="display:none;"></div>            <div class="cta-row">
+              <button class="btn-primary" onclick="runAnalysis()">Analyze</button>
+              <div class="score-badge" id="miniScore">Score: 0</div>
+            </div>
+            <div class="result-card" id="result" style="display:none">
+              <h3>Result: <span id="riskLabel"></span></h3>
+              <div class="result-details">
+                <span class="detail-pill" id="scoreBadge"></span>
+                <span class="detail-pill" id="wordCount"></span>
+                <span class="detail-pill" id="sentenceCount"></span>
+              </div>
+              <div style="margin-top:12px; color:#475569; font-size:0.96rem;" id="markerList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const SUPPORTED_EXTENSIONS = ['.pdf', '.docx', '.txt'];
+
+      function showMessage(type, text) {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.className = `message-box ${type}`;
+        messageBox.textContent = text;
+        messageBox.style.display = 'block';
+      }
+
+      function hideMessage() {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.style.display = 'none';
+      }
+
+      document.getElementById('fileInput').addEventListener('change', function() {
+        if (this.files[0]) {
+          const fileName = this.files[0].name;
+          const fileExt = '.' + fileName.split('.').pop().toLowerCase();
+          if (!SUPPORTED_EXTENSIONS.includes(fileExt)) {
+            showMessage('warning', `File extension "${fileExt}" is not supported. Supported formats: PDF, DOCX, TXT`);
+          } else {
+            showMessage('success', `File ready: ${fileName}`);
+          }
+        }
+      });
+
+      async function runAnalysis() {
+        const text = document.getElementById('textInput').value || '';
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+
+        if (!text.trim() && !file) {
+          showMessage('info', '📄 Please either paste text in the textarea above or upload a file (PDF, DOCX, or TXT)');
+          return;
+        }
+
+        if (file) {
+          const fileName = file.name;
+          const fileExt = '.' + fileName.split('.').pop().toLowerCase();
+          if (!SUPPORTED_EXTENSIONS.includes(fileExt)) {
+            showMessage('warning', `File extension "${fileExt}" is not supported. Please use PDF, DOCX, or TXT files.`);
+            return;
+          }
+        }
+
+        hideMessage();
+
+        if (file) {
+          // Analyze uploaded file
+          const formData = new FormData();
+          formData.append('file', file);
+
+          try {
+            const response = await fetch('/api/analyze-file', {
+              method: 'POST',
+              body: formData
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+              throw new Error(data.error || 'File analysis failed');
+            }
+
+            const result = data.result;
+            const details = result.details || {};
+            const wordCount = details.word_count || 0;
+            const sentenceCount = details.sentence_count || 0;
+            const markerHits = details.marker_hits || [];
+            const label = result.label || 'Low risk';
+            const labelClass = label === 'High risk' ? 'label-high' : label === 'Medium risk' ? 'label-medium' : 'label-low';
+            hideMessage();
+            showResult(result.score, label, markerHits, wordCount, sentenceCount, labelClass, '');
+          } catch (error) {
+            showMessage('warning', error.message || 'Unable to analyze file.');
+          }
+        } else {
+          // Analyze pasted text
+          try {
+            const response = await fetch('/api/analyze', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text })
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+              throw new Error(data.error || 'Analysis failed');
+            }
+
+            const result = data.result;
+            const details = result.details || {};
+            const wordCount = details.word_count || 0;
+            const sentenceCount = details.sentence_count || 0;
+            const markerHits = details.marker_hits || [];
+            const label = result.label || 'Low risk';
+            const labelClass = label === 'High risk' ? 'label-high' : label === 'Medium risk' ? 'label-medium' : 'label-low';
+            hideMessage();
+            showResult(result.score, label, markerHits, wordCount, sentenceCount, labelClass, '');
+          } catch (error) {
+            showMessage('warning', error.message || 'Unable to analyze text.');
+          }
+        }
+      }
+
+      function showResult(score, label, markerHits, wordCount, sentenceCount, labelClass, message) {
+        const resultBox = document.getElementById('result');
+        const riskLabel = document.getElementById('riskLabel');
+        const scoreBadge = document.getElementById('scoreBadge');
+        const wordCountEl = document.getElementById('wordCount');
+        const sentenceCountEl = document.getElementById('sentenceCount');
+        const markerList = document.getElementById('markerList');
+        const miniScore = document.getElementById('miniScore');
+
+        resultBox.style.display = 'block';
+        riskLabel.textContent = label;
+        riskLabel.className = labelClass;
+        scoreBadge.textContent = `Score: ${score}/100`;
+        wordCountEl.textContent = `Words: ${wordCount}`;
+        sentenceCountEl.textContent = `Sentences: ${sentenceCount}`;
+        markerList.textContent = message || (markerHits.length ? `Matched markers: ${markerHits.join(', ')}` : 'Matched markers: None');
+        miniScore.textContent = `Score: ${score}`;
+        hideMessage();
+      }
+    </script>
+  </body>
+</html>

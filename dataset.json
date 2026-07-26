@@ -1,0 +1,10 @@
+[
+  {"text": "The experiment was carried out over three days in the university laboratory. We recorded the temperature at regular intervals and compared the results with the control group. The observations were consistent with the original hypothesis.", "label": "human"},
+  {"text": "The student presented a detailed explanation of the experiment and discussed how the results supported the research question.", "label": "human"},
+  {"text": "In this essay, I will discuss the significance of modern education systems and the impact of digital technologies on learning outcomes.", "label": "ai"},
+  {"text": "In conclusion, this essay comprehensively explores the multifaceted implications of modern technological advancement and offers a nuanced analysis of the complex interplay between innovation and societal transformation.", "label": "ai"},
+  {"text": "The findings suggest that online learning platforms can improve accessibility, but they also create challenges for equitable participation and student engagement.", "label": "ai"},
+  {"text": "The report compares the effects of the intervention across different groups and explains why the observed differences were statistically significant.", "label": "human"},
+  {"text": "This paper examines how educational institutions can adopt thoughtful strategies to improve student engagement and support inclusive learning experiences.", "label": "ai"},
+  {"text": "The results indicate that the treatment group performed better than the control group and that the improvement was consistent across repeated trials.", "label": "human"}
+]
