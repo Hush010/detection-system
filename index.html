@@ -274,6 +274,9 @@
           <p>Enter any assignment or essay excerpt, then hit Analyze to see how closely the writing resembles AI-generated output.</p>
           <div class="form-shell">
             <textarea id="textInput" placeholder="Paste assignment text here..."></textarea>
+            <div class="message-box info" style="margin: 8px 0;">
+              <strong>📁 File Upload:</strong> You can also upload PDF, DOCX, or TXT files for analysis.
+            </div>
             <input id="fileInput" type="file" accept=".pdf,.docx,.txt" style="padding:12px 14px; border:1px solid #cbd5e1; border-radius:16px; background:#f8fafc;" />            <div id="messageBox" style="display:none;"></div>            <div class="cta-row">
               <button class="btn-primary" onclick="runAnalysis()">Analyze</button>
               <div class="score-badge" id="miniScore">Score: 0</div>
