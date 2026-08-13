@@ -232,6 +232,56 @@
         font-size: 0.95rem;
       }
 
+      .file-upload-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #fileInput {
+        position: absolute;
+        left: -9999px;
+      }
+
+      .file-upload-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, #f0f9ff, #f0fdf4);
+        border: 2px dashed #0ea5e9;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        color: #0369a1;
+        font-weight: 500;
+        font-size: 0.96rem;
+      }
+
+      .file-upload-label:hover {
+        background: linear-gradient(135deg, #e0f2fe, #dcfce7);
+        border-color: #2563eb;
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
+      }
+
+      .file-upload-label:active {
+        transform: scale(0.98);
+      }
+
+      .file-name-display {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: #475569;
+        padding: 8px 12px;
+        background: #f1f5f9;
+        border-radius: 12px;
+        display: none;
+      }
+
+      .file-name-display.show {
+        display: block;
+      }
+
       .label-low { color: #0f766e; }
       .label-medium { color: #b45309; }
       .label-high { color: #dc2626; }
@@ -277,7 +327,13 @@
             <div class="message-box info" style="margin: 8px 0;">
               <strong>📁 File Upload:</strong> You can also upload PDF, DOCX, or TXT files for analysis.
             </div>
-            <input id="fileInput" type="file" accept=".pdf,.docx,.txt" style="padding:12px 14px; border:1px solid #cbd5e1; border-radius:16px; background:#f8fafc;" />            <div id="messageBox" style="display:none;"></div>            <div class="cta-row">
+            <div class="file-upload-wrapper">
+              <label class="file-upload-label" for="fileInput">
+                <span>📄 Choose File (PDF, DOCX, TXT)</span>
+              </label>
+              <input id="fileInput" type="file" accept=".pdf,.docx,.txt" />
+              <div class="file-name-display" id="fileName"></div>
+            </div>            <div id="messageBox" style="display:none;"></div>            <div class="cta-row">
               <button class="btn-primary" onclick="runAnalysis()">Analyze</button>
               <div class="score-badge" id="miniScore">Score: 0</div>
             </div>
@@ -311,13 +367,17 @@
       }
 
       document.getElementById('fileInput').addEventListener('change', function() {
+        const fileNameDisplay = document.getElementById('fileName');
         if (this.files[0]) {
           const fileName = this.files[0].name;
           const fileExt = '.' + fileName.split('.').pop().toLowerCase();
           if (!SUPPORTED_EXTENSIONS.includes(fileExt)) {
             showMessage('warning', `File extension "${fileExt}" is not supported. Supported formats: PDF, DOCX, TXT`);
+            fileNameDisplay.classList.remove('show');
           } else {
             showMessage('success', `File ready: ${fileName}`);
+            fileNameDisplay.textContent = `✅ ${fileName} selected`;
+            fileNameDisplay.classList.add('show');
           }
         }
       });
