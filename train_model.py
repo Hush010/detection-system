@@ -39,7 +39,7 @@ def train_and_evaluate():
 
     pipeline = make_pipeline(
         TfidfVectorizer(ngram_range=(1, 2), min_df=1),
-        LogisticRegression(max_iter=1000),
+        LogisticRegression(max_iter=1000, multi_class='multinomial'),
     )
     pipeline.fit(X_train, y_train)
 

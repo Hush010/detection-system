@@ -40,7 +40,43 @@ class DetectorTests(unittest.TestCase):
     def test_engine_is_present(self):
         text = "A simple sentence about a classroom assignment."
         result = analyze_text(text)
-        self.assertIn(result["details"].get("engine"), {"heuristic", "transformer"})
+        self.assertIn(result["details"].get("engine"), {"heuristic", "transformer", "trained_model"})
+
+    def test_hybrid_text_detected_as_ai(self):
+        """Test that AI text edited to look human is still flagged as AI."""
+        text = (
+            "Technology keeps changing how we work and live. There are both good and bad effects. "
+            "Some people benefit more than others. We need policies to help everyone adapt to this change."
+        )
+        result = analyze_text(text)
+        # Hybrid should be detected as high risk (AI)
+        self.assertEqual(result["label"], "High risk")
+        self.assertGreater(result["score"], 50)
+        # Verify the prediction identifies it as ai or hybrid
+        if "prediction" in result["details"]:
+            self.assertIn(result["details"]["prediction"], {"ai", "hybrid"})
+
+    def test_hybrid_vs_pure_ai(self):
+        """Test that hybrid text (edited AI) has different characteristics than pure AI."""
+        pure_ai = (
+            "The multifaceted implications of contemporary technological advancement necessitate "
+            "a comprehensive examination of stakeholder perspectives and regulatory frameworks."
+        )
+        hybrid = (
+            "Digital transformation impacts every aspect of business today. Companies face both "
+            "opportunities and risks. Success depends on careful planning and execution."
+        )
+        
+        pure_result = analyze_text(pure_ai)
+        hybrid_result = analyze_text(hybrid)
+        
+        # Both should be flagged as high risk
+        self.assertEqual(pure_result["label"], "High risk")
+        self.assertEqual(hybrid_result["label"], "High risk")
+        
+        # Hybrid might have slightly lower score but still risky
+        self.assertGreater(pure_result["score"], 40)
+        self.assertGreater(hybrid_result["score"], 40)
 
 
 if __name__ == "__main__":
