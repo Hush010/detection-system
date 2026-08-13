@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="plagiarism/detection/db" VERSION="20240813" COMMENT="Database schema for AI Detection plugin">
+  <TABLES>
+    <TABLE NAME="plagiarism_detection_results" COMMENT="Stores AI detection results for submissions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+        <FIELD NAME="submissionid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+        <FIELD NAME="score" TYPE="int" LENGTH="3" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Detection score 0-100" />
+        <FIELD NAME="label" TYPE="char" LENGTH="50" NOTNULL="true" DEFAULT="Unknown" SEQUENCE="false" COMMENT="Risk level label" />
+        <FIELD NAME="timestamp" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        <KEY NAME="submissionid" TYPE="unique" FIELDS="submissionid" />
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
