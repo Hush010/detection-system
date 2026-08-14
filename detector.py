@@ -41,7 +41,7 @@ def analyze_text_with_transformer(text: str) -> Dict[str, object]:
         return {
             "score": 0.0,
             "label": "Low risk",
-            "details": {"engine": "transformer", "reason": "empty text"},
+            "details": {"engine": "transformer", "reason": "empty text", "word_count": 0, "sentence_count": 0, "marker_hits": []},
         }
 
     classifier = _load_hf_pipeline()
@@ -62,6 +62,9 @@ def analyze_text_with_transformer(text: str) -> Dict[str, object]:
     else:
         risk_label = "Low risk"
 
+    word_count = len(cleaned.split())
+    sentence_count = max(1, len(re.findall(r"(?<=[.!?])\s+", cleaned)) + 1)
+
     return {
         "score": score,
         "label": risk_label,
@@ -73,6 +76,9 @@ def analyze_text_with_transformer(text: str) -> Dict[str, object]:
             "scores": classification["scores"],
             "label_order": classification["labels"],
             "ai_probability": ai_score,
+            "word_count": word_count,
+            "sentence_count": sentence_count,
+            "marker_hits": [],
         },
     }
 
@@ -112,6 +118,9 @@ def analyze_text(text: str) -> Dict[str, object]:
             else:
                 risk_label = "Low risk"
             
+            word_count = len(cleaned.split())
+            sentence_count = max(1, len(re.findall(r"(?<=[.!?])\s+", cleaned)) + 1)
+            
             return {
                 "score": score,
                 "label": risk_label,
@@ -119,6 +128,9 @@ def analyze_text(text: str) -> Dict[str, object]:
                     "engine": "trained_model",
                     "prediction": prediction,
                     "probabilities": {classes[i]: round(probabilities[i], 3) for i in range(len(classes))},
+                    "word_count": word_count,
+                    "sentence_count": sentence_count,
+                    "marker_hits": [],
                 },
             }
         except Exception:
