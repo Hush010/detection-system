@@ -338,21 +338,6 @@
         max-width: 420px;
       }
 
-      .spinner-circle {
-        width: 60px;
-        height: 60px;
-        border: 4px solid #e2e8f0;
-        border-top: 4px solid #2563eb;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 20px;
-      }
-
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
       .loading-text {
         font-size: 1.1rem;
         font-weight: 600;
@@ -360,48 +345,17 @@
         margin-bottom: 8px;
       }
 
-      .loading-subtext {
-        font-size: 0.9rem;
-        color: #64748b;
-        margin: 0;
-      }
-
-      .progress-bar {
-        width: 100%;
-        height: 3px;
-        background: #e2e8f0;
-        border-radius: 999px;
-        overflow: hidden;
-        margin-top: 16px;
-      }
-
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #2563eb, #0ea5e9);
-        width: 0%;
-        animation: progress 2s ease-in-out infinite;
-      }
-
-      @keyframes progress {
-        0% { width: 10%; }
-        50% { width: 70%; }
-        100% { width: 90%; }
-      }
-
       @media (min-width: 900px) {
         .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   </head>
   <body>
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loading-spinner">
-        <div class="spinner-circle"></div>
+        <div id="lottieContainer" style="width: 120px; height: 120px; margin: 0 auto 20px;"></div>
         <div class="loading-text">Analyzing your content...</div>
-        <div class="loading-subtext">This may take up to 2 minutes</div>
-        <div class="progress-bar">
-          <div class="progress-bar-fill"></div>
-        </div>
       </div>
     </div>
     <main class="page">
@@ -456,6 +410,15 @@
       function showLoading() {
         const loadingOverlay = document.getElementById('loadingOverlay');
         loadingOverlay.classList.add('active');
+        
+        // Initialize Lottie animation
+        lottie.loadAnimation({
+          container: document.getElementById('lottieContainer'),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'https://lottie.host/4f8cd0be-d5d2-46ea-beb0-e1f7f2b2e0f2/blue2.json'
+        });
       }
 
       function hideLoading() {
