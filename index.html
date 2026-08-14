@@ -345,16 +345,47 @@
         margin-bottom: 8px;
       }
 
+      .animated-loader {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: conic-gradient(
+          from 0deg,
+          #2563eb 0deg,
+          #0ea5e9 90deg,
+          #e0f2fe 180deg,
+          #2563eb 360deg
+        );
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+        position: relative;
+      }
+
+      .animated-loader::after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        background: white;
+        border-radius: 50%;
+      }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
       @media (min-width: 900px) {
         .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
       }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   </head>
   <body>
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loading-spinner">
-        <div id="lottieContainer" style="width: 120px; height: 120px; margin: 0 auto 20px;"></div>
+        <div class="animated-loader"></div>
         <div class="loading-text">Analyzing your content...</div>
       </div>
     </div>
@@ -410,15 +441,6 @@
       function showLoading() {
         const loadingOverlay = document.getElementById('loadingOverlay');
         loadingOverlay.classList.add('active');
-        
-        // Initialize Lottie animation
-        lottie.loadAnimation({
-          container: document.getElementById('lottieContainer'),
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: 'https://lottie.host/4f8cd0be-d5d2-46ea-beb0-e1f7f2b2e0f2/blue2.json'
-        });
       }
 
       function hideLoading() {
