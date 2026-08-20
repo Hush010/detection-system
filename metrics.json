@@ -34,5 +34,8 @@
       "f1-score": 0.9440559440559441,
       "support": 18.0
     }
-  }
+  },
+  "health_warning": "These figures come from a single 18-sample hold-out split of a 72-sample dataset and are not a generalisable accuracy claim. Swapping random_state moves them by several points. Use the out-of-fold figures in calibration.json when reporting performance.",
+  "n_train": 54,
+  "n_test": 18
 }
