@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "source_dataset": "dataset.json",
+  "sklearn_version": "1.9.0",
+  "n_samples": 72,
+  "cv_folds": 6,
+  "platt": {
+    "a": 34.67761356919358,
+    "b": -21.526189188515843,
+    "C": 300.0,
+    "brier_by_C": {
+      "1.0": 0.20130773752854533,
+      "3.0": 0.16587521532014368,
+      "10.0": 0.1133634088603989,
+      "30.0": 0.07942023994895646,
+      "100.0": 0.06413523996595077,
+      "300.0": 0.06103393008439434,
+      "1000.0": 0.061192097396839285
+    }
+  },
+  "bands": {
+    "review": 31.2,
+    "high": 87.8
+  },
+  "abstain": {
+    "min_words": 50
+  },
+  "target_false_positive_rate": {
+    "high_risk": 0.05,
+    "needs_review": 0.2
+  },
+  "out_of_fold_metrics": {
+    "macro_precision": 0.842,
+    "macro_recall": 0.8406,
+    "macro_f1": 0.8394,
+    "accuracy": 0.8472,
+    "per_fold_macro_f1": [
+      0.8963,
+      0.8148,
+      0.746,
+      0.9153,
+      0.832,
+      0.8148
+    ],
+    "fold_macro_f1_spread": 0.1693
+  },
+  "separability": {
+    "auc_human_vs_generated": 0.9651,
+    "human_score_median": 7.7,
+    "human_score_p95": 85.9,
+    "generated_score_median": 95.6,
+    "generated_score_p05": 57.1
+  },
+  "caveats": [
+    "Calibrated on 72 short samples (median ~21 words). Treat every number here as indicative, not authoritative.",
+    "Calibration is fitted on out-of-fold predictions from pipelines refit per fold, so it approximates - but is not identical to - the behaviour of the single shipped model.",
+    "Scores are evidence for a human reviewer to weigh, never grounds for an automated accusation."
+  ]
+}

@@ -285,6 +285,7 @@
       .label-low { color: #0f766e; }
       .label-medium { color: #b45309; }
       .label-high { color: #dc2626; }
+      .label-inconclusive { color: #475569; }
 
       .feature-grid {
         display: grid;
@@ -502,15 +503,8 @@
               throw new Error(data.error || 'File analysis failed');
             }
 
-            const result = data.result;
-            const details = result.details || {};
-            const wordCount = details.word_count || 0;
-            const sentenceCount = details.sentence_count || 0;
-            const markerHits = details.marker_hits || [];
-            const label = result.label || 'Low risk';
-            const labelClass = label === 'High risk' ? 'label-high' : label === 'Medium risk' ? 'label-medium' : 'label-low';
             hideLoading();
-            showResult(result.score, label, markerHits, wordCount, sentenceCount, labelClass, '');
+            renderResult(data.result);
           } catch (error) {
             hideLoading();
             showMessage('warning', error.message || 'Unable to analyze file.');
@@ -529,15 +523,8 @@
               throw new Error(data.error || 'Analysis failed');
             }
 
-            const result = data.result;
-            const details = result.details || {};
-            const wordCount = details.word_count || 0;
-            const sentenceCount = details.sentence_count || 0;
-            const markerHits = details.marker_hits || [];
-            const label = result.label || 'Low risk';
-            const labelClass = label === 'High risk' ? 'label-high' : label === 'Medium risk' ? 'label-medium' : 'label-low';
             hideLoading();
-            showResult(result.score, label, markerHits, wordCount, sentenceCount, labelClass, '');
+            renderResult(data.result);
           } catch (error) {
             hideLoading();
             showMessage('warning', error.message || 'Unable to analyze text.');
@@ -545,7 +532,47 @@
         }
       }
 
-      function showResult(score, label, markerHits, wordCount, sentenceCount, labelClass, message) {
+      const LABEL_CLASSES = {
+        'High risk': 'label-high',
+        'Needs review': 'label-medium',
+        'Inconclusive': 'label-inconclusive',
+        'Low risk': 'label-low'
+      };
+
+      // The API returns score: null when the detector declines to judge the
+      // submission - too short, or no calibration available. That is a real
+      // answer, not an error, so render it as one rather than printing
+      // "Score: null/100".
+      function renderResult(result) {
+        const details = result.details || {};
+        const label = result.label || 'Inconclusive';
+        const hasScore = typeof result.score === 'number';
+        const scoreText = hasScore ? `${result.score}/100` : 'Not scored';
+
+        const notes = [];
+        if (details.abstained && details.reason) {
+          notes.push(`Not scored: ${details.reason}.`);
+        }
+        if (details.advisory) {
+          notes.push('Advisory only - this engine is not calibrated and cannot flag High risk.');
+        }
+        if (hasScore) {
+          const markerHits = details.marker_hits || [];
+          notes.push(markerHits.length ? `Matched markers: ${markerHits.join(', ')}` : 'Matched markers: None');
+        }
+        notes.push('A score is evidence for a human reviewer to weigh, never proof on its own.');
+
+        showResult(
+          scoreText,
+          label,
+          notes.join(' '),
+          details.word_count || 0,
+          details.sentence_count || 0,
+          LABEL_CLASSES[label] || 'label-inconclusive'
+        );
+      }
+
+      function showResult(scoreText, label, message, wordCount, sentenceCount, labelClass) {
         const resultBox = document.getElementById('result');
         const riskLabel = document.getElementById('riskLabel');
         const scoreBadge = document.getElementById('scoreBadge');
@@ -557,11 +584,11 @@
         resultBox.style.display = 'block';
         riskLabel.textContent = label;
         riskLabel.className = labelClass;
-        scoreBadge.textContent = `Score: ${score}/100`;
+        scoreBadge.textContent = `Score: ${scoreText}`;
         wordCountEl.textContent = `Words: ${wordCount}`;
         sentenceCountEl.textContent = `Sentences: ${sentenceCount}`;
-        markerList.textContent = message || (markerHits.length ? `Matched markers: ${markerHits.join(', ')}` : 'Matched markers: None');
-        miniScore.textContent = `Score: ${score}`;
+        markerList.textContent = message;
+        miniScore.textContent = `Score: ${scoreText}`;
         hideMessage();
       }
     </script>

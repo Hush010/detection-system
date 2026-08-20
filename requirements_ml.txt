@@ -1,4 +1,5 @@
-scikit-learn>=1.4.0
-joblib>=1.4.0
-transformers>=5.14.1
+# Optional transformer path. Inherits the pins above so the pickled model and
+# its calibration cannot disagree at runtime.
+-r requirements.txt
+transformers>=4.44.0
 torch>=2.0.0
