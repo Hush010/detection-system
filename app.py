@@ -1,15 +1,28 @@
 from io import BytesIO
-import zipfile
-import xml.etree.ElementTree as ET
+import logging
 import os
+import zipfile
+import defusedxml.ElementTree as ET
 
 from flask import Flask, jsonify, send_file, request
 from detector import analyze_text
 import PyPDF2
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024  # 10 MB limit
 
 ALLOWED_EXTENSIONS = {"pdf", "docx", "txt"}
+
+
+@app.errorhandler(413)
+def file_too_large(e):
+    return jsonify({"error": "File size exceeds the maximum allowed limit of 10MB."}), 413
 
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
@@ -18,8 +31,10 @@ def extract_text_from_pdf(file_bytes: bytes) -> str:
         pages = [page.extract_text() or "" for page in reader.pages]
         return "\n".join(pages)
     except PyPDF2.errors.PdfReadError as e:
+        logger.warning(f"PDF read error: {e}")
         raise ValueError(f"Unable to read PDF: {str(e)}. The file may be corrupted or invalid.")
     except Exception as e:
+        logger.exception(f"PDF parsing failed: {e}")
         raise ValueError(f"PDF parsing failed: {str(e)}")
 
 
@@ -38,10 +53,13 @@ def extract_text_from_docx(file_bytes: bytes) -> str:
 
         return "\n".join(paragraphs)
     except zipfile.BadZipFile:
+        logger.warning("DOCX BadZipFile error")
         raise ValueError("Unable to read DOCX: The file is corrupted or not a valid Office document.")
     except KeyError:
+        logger.warning("DOCX missing document.xml")
         raise ValueError("Unable to read DOCX: Missing document.xml. The file may be corrupted.")
     except Exception as e:
+        logger.exception(f"DOCX parsing failed: {e}")
         raise ValueError(f"DOCX parsing failed: {str(e)}")
 
 

@@ -142,14 +142,14 @@ class plagiarism_plugin_detection extends plagiarism_plugin {
             return;
         }
 
-        // Call detection API
+        // Call detection API with 90s timeout to survive Render free tier cold starts
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $api_url . '/api/analyze');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('text' => $text)));
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 90);
 
         $response = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -169,7 +169,7 @@ class plagiarism_plugin_detection extends plagiarism_plugin {
 
         $record = new stdClass();
         $record->submissionid = $submissionid;
-        $record->score = $result['score'] ?? 0;
+        $record->score = isset($result['score']) ? $result['score'] : null;
         $record->label = $result['label'] ?? 'Unknown';
         $record->timestamp = time();
 
@@ -187,16 +187,20 @@ class plagiarism_plugin_detection extends plagiarism_plugin {
     }
 
     private function render_result($result) {
-        $label_class = 'label-success';
-        if ($result->label === 'Medium risk') {
+        $label_class = 'label-info';
+        if ($result->label === 'Low risk') {
+            $label_class = 'label-success';
+        } elseif ($result->label === 'Needs review' || $result->label === 'Medium risk') {
             $label_class = 'label-warning';
         } elseif ($result->label === 'High risk') {
             $label_class = 'label-danger';
         }
 
+        $score_text = is_null($result->score) ? 'Inconclusive' : round($result->score) . '%';
+
         $html = '<div class="plagiarism-detection-result">';
-        $html .= '<strong>AI Detection Score:</strong> ';
-        $html .= '<span class="badge ' . $label_class . '">' . round($result->score) . '%</span> ';
+        $html .= '<strong>AI Detection Result:</strong> ';
+        $html .= '<span class="badge ' . $label_class . '">' . htmlspecialchars($score_text) . '</span> ';
         $html .= '<span class="label">' . htmlspecialchars($result->label) . '</span>';
         $html .= '</div>';
 
