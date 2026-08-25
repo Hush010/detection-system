@@ -170,6 +170,71 @@ def _abstain(reason: str, engine: str, text: str, **extra) -> Dict[str, object]:
     return {"score": None, "label": LABEL_INCONCLUSIVE, "details": details}
 
 
+
+def split_into_sentences(text: str) -> list[str]:
+    """Split text into individual sentences preserving punctuation boundaries."""
+    raw_sentences = re.split(r"(?<=[.!?])\s+", (text or "").strip())
+    return [s.strip() for s in raw_sentences if s.strip()]
+
+
+def analyze_sentences(text: str) -> list[dict]:
+    """Analyze each sentence individually to generate an explainable heatmap breakdown."""
+    sentences = split_into_sentences(text)
+    if not sentences:
+        return []
+
+    model = _load_trained_model()
+    ai_markers = [
+        "in conclusion", "in summary", "comprehensively explores",
+        "multifaceted", "nuanced analysis", "it is evident that",
+        "it is important to note", "complex interplay", "delve into",
+        "furthermore", "moreover", "navigate the", "plays a crucial role",
+        "plays a vital role", "a testament to", "in today"
+    ]
+
+    results = []
+    classes = list(model.classes_) if model else []
+    index = {label: i for i, label in enumerate(classes)}
+    bands = _bands()
+
+    for s in sentences:
+        cleaned_s = normalize_text(s)
+        words = len(cleaned_s.split())
+        matched_markers = [m for m in ai_markers if m in cleaned_s]
+
+        sentence_score = None
+        if model and words >= 4:
+            try:
+                probs = model.predict_proba([cleaned_s])[0]
+                raw_ai = sum(float(probs[index[lbl]]) for lbl in NON_HUMAN_CLASSES if lbl in index)
+                cal_score = _calibrate_score(raw_ai)
+                if cal_score is not None:
+                    sentence_score = cal_score
+            except Exception:
+                pass
+
+        if sentence_score is None:
+            sentence_score = min(100.0, len(matched_markers) * 35.0)
+
+        sentence_score = round(max(0.0, min(100.0, float(sentence_score))), 1)
+
+        if sentence_score >= bands.get("high", 87.8):
+            risk_level = "high"
+        elif sentence_score >= bands.get("review", 31.2):
+            risk_level = "review"
+        else:
+            risk_level = "low"
+
+        results.append({
+            "text": s,
+            "score": sentence_score,
+            "risk": risk_level,
+            "words": words,
+            "markers": matched_markers
+        })
+    return results
+
+
 def _finalise(
     score: Optional[float],
     engine: str,
@@ -200,6 +265,7 @@ def _finalise(
     if not calibrated and label == LABEL_HIGH:
         label = LABEL_REVIEW
 
+    sentences = analyze_sentences(text)
     details = {
         "engine": engine,
         "calibrated": calibrated,
@@ -207,6 +273,7 @@ def _finalise(
         "advisory": not calibrated,
         "bands": bands,
         "marker_hits": [],
+        "sentences": sentences,
         **_counts(text),
     }
     details.update(extra)

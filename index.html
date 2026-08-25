@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI Content Detector | Calibrated Analysis</title>
+    <title>AI Content Detector | Calibrated Analysis & Heatmap</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
       :root {
         color-scheme: light;
@@ -57,6 +57,21 @@
         --stat-card-border: #e2e8f0;
         --notice-bg: #f8fafc;
         --notice-border: #e2e8f0;
+
+        --hl-high-bg: rgba(244, 63, 94, 0.12);
+        --hl-high-border: #f43f5e;
+        --hl-high-text: #be123c;
+
+        --hl-review-bg: rgba(245, 158, 11, 0.12);
+        --hl-review-border: #f59e0b;
+        --hl-review-text: #b45309;
+
+        --hl-low-bg: rgba(16, 185, 129, 0.08);
+        --hl-low-border: #10b981;
+        --hl-low-text: #047857;
+
+        --tooltip-bg: #0f172a;
+        --tooltip-text: #ffffff;
       }
 
       :root.dark-mode {
@@ -107,6 +122,21 @@
         --stat-card-border: rgba(255, 255, 255, 0.06);
         --notice-bg: #111a2e;
         --notice-border: rgba(255, 255, 255, 0.06);
+
+        --hl-high-bg: rgba(244, 63, 94, 0.22);
+        --hl-high-border: #fb7185;
+        --hl-high-text: #fda4af;
+
+        --hl-review-bg: rgba(245, 158, 11, 0.18);
+        --hl-review-border: #fbbf24;
+        --hl-review-text: #fde68a;
+
+        --hl-low-bg: rgba(16, 185, 129, 0.12);
+        --hl-low-border: #34d399;
+        --hl-low-text: #a7f3d0;
+
+        --tooltip-bg: #1e293b;
+        --tooltip-text: #f8fafc;
       }
 
       * {
@@ -129,12 +159,12 @@
       }
 
       .container {
-        width: min(900px, 100% - 32px);
+        width: min(920px, 100% - 32px);
         margin: 0 auto;
         padding: 24px 0 60px;
       }
 
-      /* ── Top Navigation Bar ── */
+      /* ── Navbar ── */
       .navbar {
         display: flex;
         justify-content: space-between;
@@ -182,12 +212,6 @@
         margin-left: 6px;
       }
 
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
       .theme-btn {
         display: inline-flex;
         align-items: center;
@@ -208,9 +232,9 @@
         transform: scale(1.05);
       }
 
-      /* ── Hero Section ── */
+      /* ── Hero ── */
       .hero {
-        margin: 36px 0 28px;
+        margin: 32px 0 28px;
         text-align: center;
       }
 
@@ -231,11 +255,11 @@
       .hero p {
         font-size: 1.05rem;
         color: var(--text-secondary);
-        max-width: 580px;
+        max-width: 600px;
         margin: 0 auto;
       }
 
-      /* ── Main Workspace Card ── */
+      /* ── Workspace Card ── */
       .workspace-card {
         background: var(--card-bg);
         border: 1px solid var(--card-border);
@@ -287,14 +311,10 @@
         display: block;
       }
 
-      /* ── Textarea & Editor ── */
-      .editor-wrapper {
-        position: relative;
-      }
-
+      /* ── Textarea ── */
       textarea.text-input {
         width: 100%;
-        min-height: 220px;
+        min-height: 200px;
         background: var(--input-bg);
         border: 1px solid var(--input-border);
         border-radius: 16px;
@@ -360,12 +380,12 @@
         background: rgba(239, 68, 68, 0.1);
       }
 
-      /* ── File Upload Dropzone ── */
+      /* ── Dropzone ── */
       .dropzone {
         border: 2px dashed var(--dropzone-border);
         background: var(--dropzone-bg);
         border-radius: 16px;
-        padding: 40px 24px;
+        padding: 36px 24px;
         text-align: center;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -464,8 +484,6 @@
       /* ── Action Trigger ── */
       .action-row {
         margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
       }
 
       .analyze-btn {
@@ -502,7 +520,7 @@
         transform: none;
       }
 
-      /* ── Notification / Alerts ── */
+      /* ── Alerts ── */
       .alert-box {
         display: none;
         padding: 12px 16px;
@@ -523,17 +541,7 @@
         color: #f59e0b;
       }
 
-      .alert-box.info {
-        background: rgba(14, 165, 233, 0.12);
-        border: 1px solid rgba(14, 165, 233, 0.3);
-        color: #0284c7;
-      }
-
-      :root.dark-mode .alert-box.info {
-        color: #38bdf8;
-      }
-
-      /* ── Result Card ── */
+      /* ── Result Section ── */
       .result-container {
         display: none;
         margin-top: 24px;
@@ -601,7 +609,7 @@
         letter-spacing: -0.03em;
       }
 
-      /* ── Visual Score Meter ── */
+      /* ── Meter ── */
       .meter-section {
         margin-bottom: 24px;
       }
@@ -647,7 +655,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 12px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
 
       .stat-card {
@@ -673,7 +681,114 @@
         font-family: var(--font-mono);
       }
 
-      /* ── Details & Disclaimer Note ── */
+      /* ── Sentence Heatmap & Highlight Section ── */
+      .heatmap-card {
+        background: var(--stat-card-bg);
+        border: 1px solid var(--stat-card-border);
+        border-radius: 18px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .heatmap-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .heatmap-title {
+        font-size: 1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .heatmap-legend {
+        display: flex;
+        gap: 10px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .legend-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .legend-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .legend-dot.high { background: #f43f5e; }
+      .legend-dot.review { background: #f59e0b; }
+      .legend-dot.low { background: #10b981; }
+
+      .heatmap-body {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--text-primary);
+        max-height: 380px;
+        overflow-y: auto;
+        padding-right: 8px;
+      }
+
+      /* Highlighted Sentences */
+      .hl-sentence {
+        padding: 3px 6px;
+        margin: 0 1px;
+        border-radius: 6px;
+        display: inline;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.15s ease;
+      }
+
+      .hl-sentence:hover {
+        filter: brightness(1.1);
+        text-decoration: underline;
+      }
+
+      .hl-sentence.risk-high {
+        background: var(--hl-high-bg);
+        border-bottom: 2px solid var(--hl-high-border);
+        color: var(--hl-high-text);
+        font-weight: 500;
+      }
+
+      .hl-sentence.risk-review {
+        background: var(--hl-review-bg);
+        border-bottom: 2px solid var(--hl-review-border);
+        color: var(--hl-review-text);
+      }
+
+      .hl-sentence.risk-low {
+        background: var(--hl-low-bg);
+      }
+
+      /* Tooltip */
+      .tooltip-card {
+        display: none;
+        position: fixed;
+        background: var(--tooltip-bg);
+        color: var(--tooltip-text);
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        z-index: 10000;
+        pointer-events: none;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        max-width: 280px;
+      }
+
+      /* ── Notice Card ── */
       .notice-card {
         background: var(--notice-bg);
         border: 1px solid var(--notice-border);
@@ -682,15 +797,6 @@
         font-size: 0.88rem;
         color: var(--text-secondary);
         line-height: 1.6;
-      }
-
-      .notice-card p + p {
-        margin-top: 8px;
-      }
-
-      .notice-highlight {
-        font-weight: 600;
-        color: var(--text-primary);
       }
 
       /* ── Loading Overlay ── */
@@ -753,12 +859,15 @@
     </style>
   </head>
   <body>
+    <!-- ── Tooltip ── -->
+    <div class="tooltip-card" id="floatingTooltip"></div>
+
     <!-- ── Loading Overlay ── -->
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loading-card">
         <div class="spinner-circle"></div>
         <h3>Analyzing Writing Patterns</h3>
-        <p>Evaluating stylistic markers & calibrated probabilities...</p>
+        <p>Evaluating sentence style & calibrated probabilities...</p>
       </div>
     </div>
 
@@ -780,12 +889,12 @@
       <!-- ── Hero ── -->
       <section class="hero">
         <h1>Detect AI Content with <span class="hero-gradient">Confidence</span></h1>
-        <p>Calibrated out-of-fold scoring designed to eliminate false positives on student and human writing.</p>
+        <p>Calibrated out-of-fold scoring with sentence-by-sentence explainability heatmaps.</p>
       </section>
 
       <!-- ── Main Workspace Card ── -->
       <main class="workspace-card">
-        <!-- ── Segmented Tabs ── -->
+        <!-- ── Tabs ── -->
         <div class="tabs-header">
           <button class="tab-btn active" id="tabTextBtn" onclick="switchTab('text')">
             <span>✍️</span> Paste Text
@@ -887,11 +996,28 @@
             </div>
           </div>
 
+          <!-- ── Sentence Highlight Heatmap ── -->
+          <div class="heatmap-card" id="heatmapCard">
+            <div class="heatmap-header">
+              <div class="heatmap-title">
+                <span>🔍</span> Sentence-Level Analysis Heatmap
+              </div>
+              <div class="heatmap-legend">
+                <span class="legend-tag"><span class="legend-dot high"></span> High AI Risk (>75%)</span>
+                <span class="legend-tag"><span class="legend-dot review"></span> Mixed (35-75%)</span>
+                <span class="legend-tag"><span class="legend-dot low"></span> Likely Human (<35%)</span>
+              </div>
+            </div>
+            <div class="heatmap-body" id="heatmapBody">
+              <!-- Sentences populated dynamically -->
+            </div>
+          </div>
+
           <!-- ── Context & Notice Box ── -->
           <div class="notice-card" id="noticeCard">
             <p id="markerNotice"></p>
             <p id="disclaimerNotice" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
-              💡 <strong>Reviewer Note:</strong> AI detection scores represent calibrated statistical probability, not absolute proof. Scores should be evaluated alongside academic context.
+              💡 <strong>Reviewer Note:</strong> AI detection scores represent calibrated statistical probability, not absolute proof. Hover over sentences above to inspect individual risk levels.
             </p>
           </div>
         </div>
@@ -952,7 +1078,7 @@
         hideAlert();
       }
 
-      // ── Live Word Count & Helpers ──
+      // ── Live Word Count ──
       function handleTextInput() {
         const text = document.getElementById("textInput").value || "";
         const words = text.trim() ? text.trim().split(/\s+/).length : 0;
@@ -981,7 +1107,7 @@
         hideAlert();
       }
 
-      // ── Drag & Drop File Handling ──
+      // ── Dropzone & File Handling ──
       const dropzone = document.getElementById("dropzone");
       let selectedFile = null;
 
@@ -1042,7 +1168,6 @@
         return (bytes / (1024 * 1024)).toFixed(1) + " MB";
       }
 
-      // ── Alerts & Loading ──
       function showAlert(type, message) {
         const box = document.getElementById("alertBox");
         box.className = `alert-box show ${type}`;
@@ -1066,7 +1191,7 @@
         }
       }
 
-      // ── API Submission & Analysis ──
+      // ── Run Analysis ──
       async function runAnalysis() {
         hideAlert();
 
@@ -1126,6 +1251,27 @@
         }
       }
 
+      // ── Tooltip Management ──
+      const tooltip = document.getElementById("floatingTooltip");
+
+      function showTooltip(e, text) {
+        tooltip.innerHTML = text;
+        tooltip.style.display = "block";
+        tooltip.style.left = (e.clientX + 12) + "px";
+        tooltip.style.top = (e.clientY + 12) + "px";
+      }
+
+      function hideTooltip() {
+        tooltip.style.display = "none";
+      }
+
+      document.addEventListener("mousemove", (e) => {
+        if (tooltip.style.display === "block") {
+          tooltip.style.left = (e.clientX + 12) + "px";
+          tooltip.style.top = (e.clientY + 12) + "px";
+        }
+      });
+
       // ── Result Rendering ──
       function renderResults(result) {
         const container = document.getElementById("resultContainer");
@@ -1140,6 +1286,8 @@
         const statSentences = document.getElementById("statSentences");
         const statEngine = document.getElementById("statEngine");
         const markerNotice = document.getElementById("markerNotice");
+        const heatmapCard = document.getElementById("heatmapCard");
+        const heatmapBody = document.getElementById("heatmapBody");
 
         const details = result.details || {};
         const label = result.label || "Inconclusive";
@@ -1161,9 +1309,11 @@
           scoreDisplay.textContent = "N/A";
           statScore.textContent = "Not Scored";
           meterSection.style.display = "none";
+          heatmapCard.style.display = "none";
           markerNotice.innerHTML = `<strong>⚠️ Abstention:</strong> ${details.reason || "Input does not contain sufficient text for calibrated classification (50 words minimum required)."}`;
         } else {
           meterSection.style.display = "block";
+          heatmapCard.style.display = "block";
           const score = result.score;
           scoreDisplay.textContent = `${score}%`;
           statScore.textContent = `${score}%`;
@@ -1189,9 +1339,30 @@
 
           const markerHits = details.marker_hits || [];
           if (markerHits.length > 0) {
-            markerNotice.innerHTML = `<strong>Matched Stylistic Markers:</strong> <span style="font-family:var(--font-mono); font-size:0.82rem;">${markerHits.join(", ")}</span>`;
+            markerNotice.innerHTML = `<strong>Overall Stylistic Markers:</strong> <span style="font-family:var(--font-mono); font-size:0.82rem;">${markerHits.join(", ")}</span>`;
           } else {
-            markerNotice.innerHTML = `<strong>Stylistic Markers:</strong> None detected. Text shows natural human linguistic variation.`;
+            markerNotice.innerHTML = `<strong>Overall Stylistic Markers:</strong> None detected in global analysis.`;
+          }
+
+          // Render Sentences Heatmap
+          const sentences = details.sentences || [];
+          heatmapBody.innerHTML = "";
+
+          if (sentences.length === 0) {
+            heatmapCard.style.display = "none";
+          } else {
+            sentences.forEach((s, idx) => {
+              const span = document.createElement("span");
+              span.className = `hl-sentence risk-${s.risk}`;
+              span.textContent = s.text + " ";
+
+              const tooltipHtml = `<strong>Sentence #${idx + 1}</strong><br>AI Probability: <strong>${s.score}%</strong> (${s.risk.toUpperCase()} risk)<br>Words: ${s.words}${s.markers && s.markers.length ? "<br>Markers: " + s.markers.join(", ") : ""}`;
+
+              span.addEventListener("mouseenter", (e) => showTooltip(e, tooltipHtml));
+              span.addEventListener("mouseleave", hideTooltip);
+
+              heatmapBody.appendChild(span);
+            });
           }
         }
 
