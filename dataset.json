@@ -1,74 +1,1010 @@
 [
-  {"text": "The experiment was carried out over three days in the university laboratory. We recorded the temperature at regular intervals and compared the results with the control group. The observations were consistent with the original hypothesis.", "label": "human"},
-  {"text": "The student presented a detailed explanation of the experiment and discussed how the results supported the research question.", "label": "human"},
-  {"text": "I really found this book interesting because the author wrote about how society changes over time. The main character learned a lot about himself through his experiences.", "label": "human"},
-  {"text": "The experiment failed initially, but we adjusted our methodology and ran it again with better controls. The second attempt worked much better.", "label": "human"},
-  {"text": "According to my research, climate change affects agriculture in multiple ways. Farmers need to adapt their planting schedules to new weather patterns.", "label": "human"},
-  {"text": "The team discovered that the new algorithm was 30% faster than the previous version. We tested it on various datasets and got consistent results.", "label": "human"},
-  {"text": "In our analysis, we examined three different approaches and found that the third method was most effective for our use case.", "label": "human"},
-  {"text": "The code runs faster now. We optimized the database queries and reduced server load by 40 percent.", "label": "human"},
-  {"text": "We tested the new medication on 500 patients and recorded their responses over six months. The results were encouraging but showed some side effects in 5% of participants.", "label": "human"},
-  {"text": "The historical data shows that similar events have occurred before, and we can learn from past mistakes to avoid repeating them.", "label": "human"},
-  {"text": "Our survey included 200 respondents from different age groups and backgrounds. The feedback was mostly positive, with 78% satisfaction rate.", "label": "human"},
-  {"text": "Mental health awareness has become increasingly important in schools. Students need better access to counseling services and mental health resources.", "label": "human"},
-  {"text": "I think the main problem is that people don't understand how important this issue really is. We should try to educate more people about it.", "label": "human"},
-  {"text": "The results show that students who got extra help improved a lot more than the control group. This was true across all grades.", "label": "human"},
-  {"text": "Our new product is cheaper and works better than the old one. Customers seem pretty happy with it so far.", "label": "human"},
-  {"text": "The company spent three years developing this technology. It uses machine learning to predict customer behavior.", "label": "human"},
-  {"text": "Looking at the data, we noticed that winter months had lower sales. This probably happens because people spend less money during that time.", "label": "human"},
-  {"text": "I read somewhere that renewable energy could replace fossil fuels within 20 years if we invest enough money in it.", "label": "human"},
-  {"text": "The project ran into some issues halfway through, but the team solved most of them pretty quickly and on time.", "label": "human"},
-  {"text": "This new method is simpler and cheaper to use. It saves time because you don't need as much training.", "label": "human"},
-  {"text": "We asked customers what they wanted and got a lot of good feedback. They mainly asked for better features and lower prices.", "label": "human"},
-  {"text": "The analysis shows that younger people use social media more than older people. This trend has been growing for the past five years.", "label": "human"},
-  {"text": "I don't think the old approach works anymore. We need to try something different and see if it helps.", "label": "human"},
-  {"text": "The weather was really bad last week, so we had to reschedule the outdoor event to the following month instead.", "label": "human"},
-  {"text": "Based on the feedback we received, the main concerns were about cost and ease of use. We're working to address both.", "label": "human"},
-  {"text": "In conclusion, this essay comprehensively explores the multifaceted implications of modern technological advancement and offers a nuanced analysis of the complex interplay between innovation and societal transformation.", "label": "ai"},
-  {"text": "The integration of artificial intelligence into healthcare systems presents both unprecedented opportunities and significant challenges that warrant careful consideration and strategic planning.", "label": "ai"},
-  {"text": "Sustainability initiatives require a comprehensive approach that encompasses environmental protection, economic viability, and social responsibility in equal measure.", "label": "ai"},
-  {"text": "Furthermore, it is imperative to acknowledge the multifaceted dimensions of contemporary challenges and their pervasive implications on societal structures and institutional frameworks.", "label": "ai"},
-  {"text": "In this essay, I will discuss the significance of modern education systems and the impact of digital technologies on learning outcomes.", "label": "ai"},
-  {"text": "The ongoing discourse surrounding the intersection of technological innovation and ethical considerations necessitates a nuanced examination of stakeholder perspectives and regulatory frameworks.", "label": "ai"},
-  {"text": "Contemporary approaches to organizational management emphasize adaptive strategies that leverage synergistic methodologies to optimize operational efficiency and facilitate sustainable growth trajectories.", "label": "ai"},
-  {"text": "The empirical evidence demonstrates that behavioral interventions yield statistically significant improvements in long-term outcomes when implemented within comprehensive support ecosystems.", "label": "ai"},
-  {"text": "This paper examines how educational institutions can adopt thoughtful strategies to improve student engagement and support inclusive learning experiences.", "label": "ai"},
-  {"text": "The findings suggest that online learning platforms can improve accessibility, but they also create challenges for equitable participation and student engagement.", "label": "ai"},
-  {"text": "In essence, the confluence of technological advancements and societal transformation necessitates a comprehensive reevaluation of existing paradigms and the implementation of innovative frameworks.", "label": "ai"},
-  {"text": "The implementation of data-driven decision-making processes is instrumental in optimizing resource allocation and maximizing organizational performance metrics across diverse operational domains.", "label": "ai"},
-  {"text": "The proliferation of digital communication platforms has fundamentally altered the landscape of interpersonal relationships and collective consciousness in unprecedented ways.", "label": "ai"},
-  {"text": "Effective stakeholder engagement requires a nuanced understanding of divergent perspectives and the cultivation of collaborative frameworks that facilitate mutual understanding and shared objectives.", "label": "ai"},
-  {"text": "The transient nature of contemporary socioeconomic challenges necessitates the development of resilient infrastructures capable of adapting to rapidly evolving environmental and organizational contingencies.", "label": "ai"},
-  {"text": "Advanced analytics and predictive modeling techniques enable organizations to anticipate market dynamics and strategically position themselves within competitive landscapes.", "label": "ai"},
-  {"text": "The convergence of multiple disciplinary perspectives facilitates the emergence of novel theoretical frameworks and innovative methodological approaches to complex problem-solving.", "label": "ai"},
-  {"text": "Organizational resilience is predicated upon the establishment of robust governance structures that prioritize transparency, accountability, and adherence to evidence-based best practices.", "label": "ai"},
-  {"text": "The multifaceted nature of modern supply chain networks requires sophisticated coordination mechanisms and real-time information systems to ensure operational continuity and risk mitigation.", "label": "ai"},
-  {"text": "Technological disruption presents both existential threats and transformative opportunities for incumbent organizations navigating an increasingly volatile and uncertain business environment.", "label": "ai"},
-  {"text": "The systematic integration of sustainable practices throughout organizational ecosystems represents a critical imperative for long-term viability and stakeholder value creation.", "label": "ai"},
-  {"text": "Innovative approaches to human capital development and organizational learning are essential catalysts for competitive differentiation in knowledge-intensive industries.", "label": "ai"},
-  {"text": "The interdisciplinary examination of sociotechnical systems reveals complex feedback mechanisms that significantly influence the efficacy and scalability of transformative interventions.", "label": "ai"},
-  {"text": "Contemporary leadership paradigms emphasize the cultivation of psychological safety and inclusive decision-making processes as foundational elements of high-performing organizational cultures.", "label": "ai"},
-  {"text": "The strategic application of emerging technologies requires comprehensive risk assessment frameworks and adaptive governance mechanisms to maximize benefits while mitigating potential externalities.", "label": "ai"},
-  {"text": "Technology keeps changing how we work and live. There are both good and bad effects. Some people benefit more than others. We need policies to help everyone.", "label": "hybrid"},
-  {"text": "Modern education uses digital tools more and more. This changes how students learn. It opens new possibilities. But there are also problems we need to solve.", "label": "hybrid"},
-  {"text": "AI is growing fast. It offers new chances for businesses and society. However, there are significant challenges. People worry about ethics and job security.", "label": "hybrid"},
-  {"text": "The relationship between climate and agriculture is complex. Farmers need to adapt to changing weather. New techniques and technology can help them succeed.", "label": "hybrid"},
-  {"text": "Communication platforms have transformed how we interact. They connect people across distances. Yet they create new social and mental health concerns.", "label": "hybrid"},
-  {"text": "Data analysis provides valuable insights for organizations. It helps with strategic planning and decision-making. Companies must handle data responsibly though.", "label": "hybrid"},
-  {"text": "Supply chains today are global and interconnected. This brings efficiency but also risk. Disruptions can have widespread consequences.", "label": "hybrid"},
-  {"text": "Organizations must adapt to rapid change. This requires new skills and mindsets. Leadership plays a key role in this transformation process.", "label": "hybrid"},
-  {"text": "Renewable energy holds promise for a sustainable future. However, infrastructure and investment challenges remain. Policies must support this transition.", "label": "hybrid"},
-  {"text": "Student engagement varies widely in online learning environments. Some students thrive with flexibility. Others struggle without in-person interaction and support.", "label": "hybrid"},
-  {"text": "Healthcare technology offers exciting possibilities. Better diagnosis and treatment are within reach. But access and cost remain significant barriers.", "label": "hybrid"},
-  {"text": "Social media influences how young people see themselves and others. Benefits include connection and community. Risks include misinformation and mental health issues.", "label": "hybrid"},
-  {"text": "Automation changes employment in many industries. Workers must develop new capabilities. Society needs comprehensive retraining and support programs.", "label": "hybrid"},
-  {"text": "Environmental protection and economic growth can work together. Sustainable business practices create value. This requires commitment and innovation from all sectors.", "label": "hybrid"},
-  {"text": "Cybersecurity is more important than ever. Threats are increasing. Organizations and individuals must stay vigilant and updated.", "label": "hybrid"},
-  {"text": "Digital transformation impacts every aspect of business today. Companies face both opportunities and risks. Success depends on careful planning and execution.", "label": "hybrid"},
-  {"text": "Innovation drives competitive advantage in the market. Companies must invest in research and development. But they also need to manage the associated costs.", "label": "hybrid"},
-  {"text": "Global supply chains create complexity and vulnerability. Businesses must build resilience. They need multiple suppliers and contingency plans.", "label": "hybrid"},
-  {"text": "Remote work has become more common after recent events. It offers flexibility for employees. However, collaboration and company culture can suffer.", "label": "hybrid"},
-  {"text": "Regulatory compliance is essential for organizations. Rules keep getting more complex. Companies must stay informed and adapt their practices.", "label": "hybrid"},
-  {"text": "Customer data is valuable but must be protected. Privacy regulations are stricter now. Businesses need strong security measures in place.", "label": "hybrid"},
-  {"text": "Market competition is intensifying across all sectors. Companies must innovate or fall behind. Strategic partnerships can help in many cases.", "label": "hybrid"}
+  {
+    "text": "The experiment was carried out over three days in the university laboratory. We recorded the temperature at regular intervals and compared the results with the control group. The observations were consistent with the original hypothesis.",
+    "label": "human"
+  },
+  {
+    "text": "The student presented a detailed explanation of the experiment and discussed how the results supported the research question.",
+    "label": "human"
+  },
+  {
+    "text": "I really found this book interesting because the author wrote about how society changes over time. The main character learned a lot about himself through his experiences.",
+    "label": "human"
+  },
+  {
+    "text": "The experiment failed initially, but we adjusted our methodology and ran it again with better controls. The second attempt worked much better.",
+    "label": "human"
+  },
+  {
+    "text": "According to my research, climate change affects agriculture in multiple ways. Farmers need to adapt their planting schedules to new weather patterns.",
+    "label": "human"
+  },
+  {
+    "text": "The team discovered that the new algorithm was 30% faster than the previous version. We tested it on various datasets and got consistent results.",
+    "label": "human"
+  },
+  {
+    "text": "In our analysis, we examined three different approaches and found that the third method was most effective for our use case.",
+    "label": "human"
+  },
+  {
+    "text": "The code runs faster now. We optimized the database queries and reduced server load by 40 percent.",
+    "label": "human"
+  },
+  {
+    "text": "We tested the new medication on 500 patients and recorded their responses over six months. The results were encouraging but showed some side effects in 5% of participants.",
+    "label": "human"
+  },
+  {
+    "text": "The historical data shows that similar events have occurred before, and we can learn from past mistakes to avoid repeating them.",
+    "label": "human"
+  },
+  {
+    "text": "Our survey included 200 respondents from different age groups and backgrounds. The feedback was mostly positive, with 78% satisfaction rate.",
+    "label": "human"
+  },
+  {
+    "text": "Mental health awareness has become increasingly important in schools. Students need better access to counseling services and mental health resources.",
+    "label": "human"
+  },
+  {
+    "text": "I think the main problem is that people don't understand how important this issue really is. We should try to educate more people about it.",
+    "label": "human"
+  },
+  {
+    "text": "The results show that students who got extra help improved a lot more than the control group. This was true across all grades.",
+    "label": "human"
+  },
+  {
+    "text": "Our new product is cheaper and works better than the old one. Customers seem pretty happy with it so far.",
+    "label": "human"
+  },
+  {
+    "text": "The company spent three years developing this technology. It uses machine learning to predict customer behavior.",
+    "label": "human"
+  },
+  {
+    "text": "Looking at the data, we noticed that winter months had lower sales. This probably happens because people spend less money during that time.",
+    "label": "human"
+  },
+  {
+    "text": "I read somewhere that renewable energy could replace fossil fuels within 20 years if we invest enough money in it.",
+    "label": "human"
+  },
+  {
+    "text": "The project ran into some issues halfway through, but the team solved most of them pretty quickly and on time.",
+    "label": "human"
+  },
+  {
+    "text": "This new method is simpler and cheaper to use. It saves time because you don't need as much training.",
+    "label": "human"
+  },
+  {
+    "text": "We asked customers what they wanted and got a lot of good feedback. They mainly asked for better features and lower prices.",
+    "label": "human"
+  },
+  {
+    "text": "The analysis shows that younger people use social media more than older people. This trend has been growing for the past five years.",
+    "label": "human"
+  },
+  {
+    "text": "I don't think the old approach works anymore. We need to try something different and see if it helps.",
+    "label": "human"
+  },
+  {
+    "text": "The weather was really bad last week, so we had to reschedule the outdoor event to the following month instead.",
+    "label": "human"
+  },
+  {
+    "text": "Based on the feedback we received, the main concerns were about cost and ease of use. We're working to address both.",
+    "label": "human"
+  },
+  {
+    "text": "In conclusion, this essay comprehensively explores the multifaceted implications of modern technological advancement and offers a nuanced analysis of the complex interplay between innovation and societal transformation.",
+    "label": "ai"
+  },
+  {
+    "text": "The integration of artificial intelligence into healthcare systems presents both unprecedented opportunities and significant challenges that warrant careful consideration and strategic planning.",
+    "label": "ai"
+  },
+  {
+    "text": "Sustainability initiatives require a comprehensive approach that encompasses environmental protection, economic viability, and social responsibility in equal measure.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, it is imperative to acknowledge the multifaceted dimensions of contemporary challenges and their pervasive implications on societal structures and institutional frameworks.",
+    "label": "ai"
+  },
+  {
+    "text": "In this essay, I will discuss the significance of modern education systems and the impact of digital technologies on learning outcomes.",
+    "label": "ai"
+  },
+  {
+    "text": "The ongoing discourse surrounding the intersection of technological innovation and ethical considerations necessitates a nuanced examination of stakeholder perspectives and regulatory frameworks.",
+    "label": "ai"
+  },
+  {
+    "text": "Contemporary approaches to organizational management emphasize adaptive strategies that leverage synergistic methodologies to optimize operational efficiency and facilitate sustainable growth trajectories.",
+    "label": "ai"
+  },
+  {
+    "text": "The empirical evidence demonstrates that behavioral interventions yield statistically significant improvements in long-term outcomes when implemented within comprehensive support ecosystems.",
+    "label": "ai"
+  },
+  {
+    "text": "This paper examines how educational institutions can adopt thoughtful strategies to improve student engagement and support inclusive learning experiences.",
+    "label": "ai"
+  },
+  {
+    "text": "The findings suggest that online learning platforms can improve accessibility, but they also create challenges for equitable participation and student engagement.",
+    "label": "ai"
+  },
+  {
+    "text": "In essence, the confluence of technological advancements and societal transformation necessitates a comprehensive reevaluation of existing paradigms and the implementation of innovative frameworks.",
+    "label": "ai"
+  },
+  {
+    "text": "The implementation of data-driven decision-making processes is instrumental in optimizing resource allocation and maximizing organizational performance metrics across diverse operational domains.",
+    "label": "ai"
+  },
+  {
+    "text": "The proliferation of digital communication platforms has fundamentally altered the landscape of interpersonal relationships and collective consciousness in unprecedented ways.",
+    "label": "ai"
+  },
+  {
+    "text": "Effective stakeholder engagement requires a nuanced understanding of divergent perspectives and the cultivation of collaborative frameworks that facilitate mutual understanding and shared objectives.",
+    "label": "ai"
+  },
+  {
+    "text": "The transient nature of contemporary socioeconomic challenges necessitates the development of resilient infrastructures capable of adapting to rapidly evolving environmental and organizational contingencies.",
+    "label": "ai"
+  },
+  {
+    "text": "Advanced analytics and predictive modeling techniques enable organizations to anticipate market dynamics and strategically position themselves within competitive landscapes.",
+    "label": "ai"
+  },
+  {
+    "text": "The convergence of multiple disciplinary perspectives facilitates the emergence of novel theoretical frameworks and innovative methodological approaches to complex problem-solving.",
+    "label": "ai"
+  },
+  {
+    "text": "Organizational resilience is predicated upon the establishment of robust governance structures that prioritize transparency, accountability, and adherence to evidence-based best practices.",
+    "label": "ai"
+  },
+  {
+    "text": "The multifaceted nature of modern supply chain networks requires sophisticated coordination mechanisms and real-time information systems to ensure operational continuity and risk mitigation.",
+    "label": "ai"
+  },
+  {
+    "text": "Technological disruption presents both existential threats and transformative opportunities for incumbent organizations navigating an increasingly volatile and uncertain business environment.",
+    "label": "ai"
+  },
+  {
+    "text": "The systematic integration of sustainable practices throughout organizational ecosystems represents a critical imperative for long-term viability and stakeholder value creation.",
+    "label": "ai"
+  },
+  {
+    "text": "Innovative approaches to human capital development and organizational learning are essential catalysts for competitive differentiation in knowledge-intensive industries.",
+    "label": "ai"
+  },
+  {
+    "text": "The interdisciplinary examination of sociotechnical systems reveals complex feedback mechanisms that significantly influence the efficacy and scalability of transformative interventions.",
+    "label": "ai"
+  },
+  {
+    "text": "Contemporary leadership paradigms emphasize the cultivation of psychological safety and inclusive decision-making processes as foundational elements of high-performing organizational cultures.",
+    "label": "ai"
+  },
+  {
+    "text": "The strategic application of emerging technologies requires comprehensive risk assessment frameworks and adaptive governance mechanisms to maximize benefits while mitigating potential externalities.",
+    "label": "ai"
+  },
+  {
+    "text": "Technology keeps changing how we work and live. There are both good and bad effects. Some people benefit more than others. We need policies to help everyone.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Modern education uses digital tools more and more. This changes how students learn. It opens new possibilities. But there are also problems we need to solve.",
+    "label": "hybrid"
+  },
+  {
+    "text": "AI is growing fast. It offers new chances for businesses and society. However, there are significant challenges. People worry about ethics and job security.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The relationship between climate and agriculture is complex. Farmers need to adapt to changing weather. New techniques and technology can help them succeed.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Communication platforms have transformed how we interact. They connect people across distances. Yet they create new social and mental health concerns.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Data analysis provides valuable insights for organizations. It helps with strategic planning and decision-making. Companies must handle data responsibly though.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Supply chains today are global and interconnected. This brings efficiency but also risk. Disruptions can have widespread consequences.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Organizations must adapt to rapid change. This requires new skills and mindsets. Leadership plays a key role in this transformation process.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Renewable energy holds promise for a sustainable future. However, infrastructure and investment challenges remain. Policies must support this transition.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Student engagement varies widely in online learning environments. Some students thrive with flexibility. Others struggle without in-person interaction and support.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Healthcare technology offers exciting possibilities. Better diagnosis and treatment are within reach. But access and cost remain significant barriers.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Social media influences how young people see themselves and others. Benefits include connection and community. Risks include misinformation and mental health issues.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Automation changes employment in many industries. Workers must develop new capabilities. Society needs comprehensive retraining and support programs.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Environmental protection and economic growth can work together. Sustainable business practices create value. This requires commitment and innovation from all sectors.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Cybersecurity is more important than ever. Threats are increasing. Organizations and individuals must stay vigilant and updated.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Digital transformation impacts every aspect of business today. Companies face both opportunities and risks. Success depends on careful planning and execution.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Innovation drives competitive advantage in the market. Companies must invest in research and development. But they also need to manage the associated costs.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Global supply chains create complexity and vulnerability. Businesses must build resilience. They need multiple suppliers and contingency plans.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Remote work has become more common after recent events. It offers flexibility for employees. However, collaboration and company culture can suffer.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Regulatory compliance is essential for organizations. Rules keep getting more complex. Companies must stay informed and adapt their practices.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Customer data is valuable but must be protected. Privacy regulations are stricter now. Businesses need strong security measures in place.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Market competition is intensifying across all sectors. Companies must innovate or fall behind. Strategic partnerships can help in many cases.",
+    "label": "hybrid"
+  },
+  {
+    "text": "To determine the velocity of sound in air, a resonance tube was filled with water and adjusted until constructive interference occurred with a 512 Hz tuning fork. The fundamental resonance occurred at 16.4 cm, which corresponds to one quarter of the acoustic wavelength.",
+    "label": "human"
+  },
+  {
+    "text": "The transition from Feudalism to early Capitalism in Western Europe was accelerated by the demographic catastrophe of the Black Death, which drastically reduced the labor supply and increased the bargaining power of peasant agricultural workers.",
+    "label": "human"
+  },
+  {
+    "text": "In object-oriented programming, encapsulation enforces data hiding by restricting direct access to internal object state, exposing only well-defined public methods to maintain modularity and reduce coupling between software components.",
+    "label": "human"
+  },
+  {
+    "text": "Epistemological foundationalism posits that all justified beliefs ultimately rest upon basic beliefs that are self-evident or directly verified by sensory experience, avoiding infinite regress in epistemic justification.",
+    "label": "human"
+  },
+  {
+    "text": "The Treaty of Versailles imposed severe financial reparations and territorial concessions on Germany in 1919, creating economic hyperinflation and political resentment that undermined the stability of the Weimar Republic.",
+    "label": "human"
+  },
+  {
+    "text": "Mendelian genetics demonstrates that inherited traits are segregated into independent alleles, where dominant alleles mask recessive phenotypes in heterozygous organisms according to the law of independent assortment.",
+    "label": "human"
+  },
+  {
+    "text": "In microeconomics, consumer surplus represents the monetary difference between the maximum price a consumer is willing to pay for a good and the actual market price they pay at equilibrium.",
+    "label": "human"
+  },
+  {
+    "text": "The primary structure of a protein is defined strictly by its unique amino acid sequence linked by covalent peptide bonds, which subsequently folds into alpha helices and beta pleated sheets driven by hydrogen bonding.",
+    "label": "human"
+  },
+  {
+    "text": "During our weekly tutorial on Victorian poetry, we discussed how Alfred Lord Tennyson's In Memoriam reflects the deep spiritual anxieties provoked by early geological discoveries and pre-Darwinian evolutionary ideas.",
+    "label": "human"
+  },
+  {
+    "text": "We configured an Apache HTTP server on Ubuntu 22.04 with mod_ssl and Let's Encrypt certificates to ensure end-to-end TLS 1.3 encryption across all client web requests.",
+    "label": "human"
+  },
+  {
+    "text": "The Stanford Prison Experiment conducted by Philip Zimbardo in 1971 attempted to investigate the psychological effects of perceived power, though modern psychologists heavily criticize its ethical violations and demand characteristics.",
+    "label": "human"
+  },
+  {
+    "text": "Plate tectonics explains continental drift through the convective movement of the Earth's asthenosphere, causing oceanic crust to subduct beneath lighter continental lithosphere at convergent boundaries.",
+    "label": "human"
+  },
+  {
+    "text": "In our organic chemistry lab, we synthesized aspirin through the esterification of salicylic acid with acetic anhydride using concentrated sulfuric acid as an acid catalyst.",
+    "label": "human"
+  },
+  {
+    "text": "The Renaissance originated in fifteenth-century Florence, fostered by wealthy mercantile patronage from the Medici family and the rediscovery of classical Greek and Latin manuscripts after the fall of Constantinople.",
+    "label": "human"
+  },
+  {
+    "text": "Signal processing in telecommunications relies heavily on the Fourier Transform to convert time-domain electromagnetic waveforms into discrete frequency spectrum components for efficient filtering and modulation.",
+    "label": "human"
+  },
+  {
+    "text": "A major challenge in training deep convolutional neural networks is vanishing gradients, which can be mitigated using residual skip connections in ResNet architectures or normalized ReLU activations.",
+    "label": "human"
+  },
+  {
+    "text": "In John Milton's Paradise Lost, Satan's dramatic rhetoric in Book I portrays him as a tragic hero defying cosmic tyranny, though Milton gradually exposes the destructive vanity of his rebellion.",
+    "label": "human"
+  },
+  {
+    "text": "Market liquidity refers to the ease with which financial assets can be rapidly converted into cash without causing significant price slippage on public exchanges.",
+    "label": "human"
+  },
+  {
+    "text": "The Doppler effect describes the observed frequency shift of wave phenomena when there is relative motion between the wave source and the observer, utilized in radar speed detection and cosmological redshift analysis.",
+    "label": "human"
+  },
+  {
+    "text": "During the Second World War, the Battle of Stalingrad in 1942 marked the turning point on the Eastern Front, resulting in the encirclement and surrender of the German Sixth Army.",
+    "label": "human"
+  },
+  {
+    "text": "When I wrote my first computer science lab report, I struggled to explain how recursive algorithms work because it was difficult to trace stack memory allocations without drawing visual recursion trees.",
+    "label": "human"
+  },
+  {
+    "text": "The law of diminishing marginal returns states that adding additional units of a variable input while holding other production factors constant will eventually yield smaller increases in total output.",
+    "label": "human"
+  },
+  {
+    "text": "In quantum physics, the photoelectric effect demonstrated that light exhibits particle-like properties, where individual photons transfer discrete energy quanta proportional to Planck's constant to liberate bound electrons.",
+    "label": "human"
+  },
+  {
+    "text": "The sociological concept of anomie, developed by \u00c9mile Durkheim, describes a breakdown of social norms and collective values during periods of rapid socioeconomic change or economic crisis.",
+    "label": "human"
+  },
+  {
+    "text": "We evaluated the energy efficiency of three sorting algorithms in embedded microcontrollers, measuring the total milliampere-hour draw across 100,000 randomized 32-bit integer arrays.",
+    "label": "human"
+  },
+  {
+    "text": "Virginia Woolf's stream-of-consciousness narrative technique in Mrs Dalloway captures the fluid, non-linear nature of human consciousness, blurring the boundary between external London streets and internal memory.",
+    "label": "human"
+  },
+  {
+    "text": "During our biology field trip to the rocky intertidal zone, we recorded the vertical distribution of barnacles, limpets, and brown algae to test Connell's competitive exclusion hypothesis.",
+    "label": "human"
+  },
+  {
+    "text": "Keynesian economic theory advocates for counter-cyclical government fiscal intervention, such as increased public spending and tax cuts, to stimulate aggregate demand during macroeconomic recessions.",
+    "label": "human"
+  },
+  {
+    "text": "In distributed computing, the CAP theorem states that a distributed data store can simultaneously provide at most two of three guarantees: Consistency, Availability, and Partition tolerance.",
+    "label": "human"
+  },
+  {
+    "text": "Our survey of 250 high school seniors showed that peer group norms and parental educational expectations were stronger predictors of university application rates than standardized test scores.",
+    "label": "human"
+  },
+  {
+    "text": "The synthesis of ammonia via the Haber-Bosch process operates at elevated temperatures and pressures over an iron catalyst to overcome high activation energy while balancing exothermic Le Chatelier equilibrium constraints.",
+    "label": "human"
+  },
+  {
+    "text": "In Machiavelli's The Prince, political leadership is stripped of traditional Christian morality, prioritizing pragmatic statecraft, military readiness, and the strategic balance between fear and love.",
+    "label": "human"
+  },
+  {
+    "text": "The greenhouse effect occurs when atmospheric trace gases such as carbon dioxide and methane absorb outgoing longwave infrared radiation emitted by the Earth's surface and re-radiate it in all directions.",
+    "label": "human"
+  },
+  {
+    "text": "We used Wireshark to capture TCP handshake packets on our local campus subnet, verifying that the SYN, SYN-ACK, and ACK sequence numbers synchronized correctly across the connection lifecycle.",
+    "label": "human"
+  },
+  {
+    "text": "Cognitive dissonance theory, formulated by Leon Festinger, posits that individuals experience acute psychological discomfort when holding contradictory beliefs, motivating attitude change to restore cognitive consistency.",
+    "label": "human"
+  },
+  {
+    "text": "The Black-Scholes model provides a mathematical framework for pricing European-style financial options based on underlying asset price, strike price, volatility, time to expiration, and risk-free interest rates.",
+    "label": "human"
+  },
+  {
+    "text": "In Harper Lee's To Kill a Mockingbird, Atticus Finch represents principled moral integrity against the systemic racial prejudice and social conformity of 1930s Maycomb, Alabama.",
+    "label": "human"
+  },
+  {
+    "text": "The central dogma of molecular biology articulates the directional flow of genetic information from DNA replication to transcription into RNA, and subsequent translation into functional polypeptides.",
+    "label": "human"
+  },
+  {
+    "text": "During my second year studying mechanical engineering, our team designed a small wind turbine blade using NACA 4412 airfoils, testing the lift-to-drag ratio in a subsonic wind tunnel.",
+    "label": "human"
+  },
+  {
+    "text": "The Marshall Plan provided over 13 billion dollars in economic assistance to rebuild Western European economies after 1948, aiming to restore industrial production and prevent the spread of Soviet influence.",
+    "label": "human"
+  },
+  {
+    "text": "In conclusion, the multifaceted integration of technological paradigms in contemporary higher education comprehensively demonstrates a pivotal role in optimizing pedagogical efficiency. Furthermore, it is evident that stakeholder collaboration serves as a testament to transformative institutional growth.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, the complex interplay between renewable energy adoption and macroeconomic resilience underscores the necessity of strategic governmental frameworks. Delving into these nuanced dynamics reveals that proactive policy alignment is paramount for sustainable development.",
+    "label": "ai"
+  },
+  {
+    "text": "This analysis comprehensively examines the sociopolitical ramifications of algorithmic decision-making in public governance. It is essential to recognize that automated systems, while enhancing operational speed, require rigorous ethical oversight to safeguard equity.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, contemporary supply chain ecosystems must leverage predictive analytics to navigate global disruptions effectively. By adopting resilient digital infrastructures, multinational enterprises can mitigate volatility while maintaining cost efficiency across operations.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, the transition toward decentralized finance represents an unprecedented paradigm shift in global banking. A holistic regulatory framework that balances financial innovation with risk management is vital for maintaining market integrity.",
+    "label": "ai"
+  },
+  {
+    "text": "It is important to emphasize that artificial intelligence ethics must remain at the forefront of contemporary technological discourse. As machine learning algorithms become increasingly ubiquitous, proactive governance is indispensable for mitigating systemic bias.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the profound nuances of macroeconomic equilibrium highlights the delicate balance between fiscal stimulus and long-term monetary stability. These findings underscore that targeted economic interventions are essential in volatile markets.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's rapidly evolving digital landscape, institutions must navigate the complex challenges of cloud security and regulatory compliance. Implementing comprehensive encryption protocols serves as a testament to an organization's commitment to data privacy.",
+    "label": "ai"
+  },
+  {
+    "text": "A nuanced examination of sustainable urban planning demonstrates that public transit modernization and green building standards play a crucial role in lowering carbon emissions while elevating urban livability for future generations.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the integration of biomedical informatics in personalized medicine offers groundbreaking potential for targeted therapeutic interventions. Multidisciplinary collaboration between computer scientists and clinicians is paramount for clinical breakthroughs.",
+    "label": "ai"
+  },
+  {
+    "text": "In conclusion, the historical evolution of constitutional jurisprudence comprehensively reflects the continuous struggle to harmonize state sovereignty with individual liberties. Consequently, institutional checks and balances remain the cornerstone of democracy.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, natural language processing models have fundamentally altered human-computer interaction, facilitating sophisticated conversational capabilities and automated summarization across diverse enterprise applications.",
+    "label": "ai"
+  },
+  {
+    "text": "This paper comprehensively explores the intricate mechanisms of atmospheric carbon sequestration, highlighting the pivotal role played by coastal wetlands and reforested ecosystems in global climate mitigation strategies.",
+    "label": "ai"
+  },
+  {
+    "text": "It is evident that the strategic implementation of agile methodologies in software engineering fosters continuous improvement, collaborative transparency, and accelerated deployment cycles in competitive software markets.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, exploring the philosophical foundations of human consciousness reveals a multifaceted dialogue between materialist reductionism and phenomenological inquiry, demonstrating the enduring complexity of the mind-body problem.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the dynamics of international diplomatic relations emphasizes that multilateral treaties play a vital role in preventing regional conflict escalation and establishing enduring geopolitical stability.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the convergence of quantum encryption and high-performance computing represents a transformative milestone in cybersecurity, rendering conventional cryptographic vulnerabilities obsolete.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's interconnected global economy, corporate social responsibility serves as a testament to an enterprise's dedication to environmental stewardship, social equity, and ethical corporate governance.",
+    "label": "ai"
+  },
+  {
+    "text": "A comprehensive analysis of consumer behavior in digital marketplaces reveals that personalized recommendation algorithms significantly influence purchasing trajectories and brand loyalty across online platforms.",
+    "label": "ai"
+  },
+  {
+    "text": "Ultimately, the multifaceted synergy between robotic automation and industrial manufacturing continues to redefine productivity benchmarks, underscoring the necessity of continuous workforce upskilling in modern industries.",
+    "label": "ai"
+  },
+  {
+    "text": "Our laboratory team performed the distillation of crude bio-oil samples over a four-hour period. In conclusion, the multifaceted separation comprehensively yielded three distinct hydrocarbon fractions, but the boiling point measurements varied by about 5 degrees due to fluctuating cooling water pressure.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The history essay analyzes the military strategies used during the American Revolution. Digital mapping tools and modern historical databases played a crucial role in tracking troop movements, but you have to remember that weather and disease were often more decisive than tactical maneuvers.",
+    "label": "hybrid"
+  },
+  {
+    "text": "When evaluating the impact of remote work policies on employee productivity, our department surveyed 85 engineers. Furthermore, it is evident that flexible working hours improved overall job satisfaction, though team communication occasionally suffered during major release deadlines.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We tested the electrical resistance of copper and aluminum wires at temperatures ranging from minus 20 to 80 degrees Celsius. In summary, our experimental data confirmed that resistance increases linearly with temperature, which matches the theoretical temperature coefficient of resistance.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The literature review discusses the psychological themes in Dostoyevsky's Crime and Punishment. A nuanced examination reveals that Raskolnikov's moral redemption is not achieved through intellectual theorizing, but through suffering, remorse, and human empathy in Siberia.",
+    "label": "hybrid"
+  },
+  {
+    "text": "During our economics seminar, we debated whether raising interest rates is the best tool to curb inflation. Delving into the complex interplay between interest rates and consumer spending shows that higher borrowing costs slow down housing markets, but they also risk increasing unemployment.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We attempted to optimize the database query by adding composite B-tree indexes on customer_id and transaction_date. Overall, the query latency dropped from 450 milliseconds to 12 milliseconds, proving that proper indexing is essential for large PostgreSQL tables.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The chemistry lab manual described a procedure for synthesizing methyl orange from sulfanilic acid. In conclusion, the reaction comprehensively produced bright orange crystals, but we had to recrystallize the product twice to remove unreacted starting materials.",
+    "label": "hybrid"
+  },
+  {
+    "text": "In our sociology group project, we examined how social media influencers impact adolescent self-esteem. Furthermore, it is important to note that while online communities can provide social support, excessive exposure to filtered images often exacerbates negative body image.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The biology project investigated the effects of light intensity on the growth rate of Chlorella vulgaris algae. In summary, our spectrophotometer optical density measurements showed that the cultures grew fastest under continuous 5000 lux illumination before reaching light saturation.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The study of macroeconomics examines aggregate indicators such as GDP growth rates, national income, price indices, and unemployment to understand how the whole economy functions across fiscal cycles.",
+    "label": "human"
+  },
+  {
+    "text": "During our weekly organic chemistry lab, we monitored the reduction of acetophenone to 1-phenylethanol using sodium borohydride in methanol, tracking reaction completion with thin-layer chromatography.",
+    "label": "human"
+  },
+  {
+    "text": "In Albert Camus's The Stranger, Meursault's emotional detachment and refusal to adhere to conventional social grief rituals during his mother's funeral serve as an indictment of bourgeois moral expectations.",
+    "label": "human"
+  },
+  {
+    "text": "The development of the printing press by Johannes Gutenberg in the mid-fifteenth century democratized access to written knowledge, facilitating the Protestant Reformation and the European scientific revolution.",
+    "label": "human"
+  },
+  {
+    "text": "We measured the magnetic hysteresis loop of a soft ferromagnetic core using an integrating operational amplifier circuit to determine the saturation magnetization and remanent magnetic flux density.",
+    "label": "human"
+  },
+  {
+    "text": "In distributed database systems, two-phase commit protocols coordinate across multiple database nodes to guarantee atomicity and durability during distributed transactional updates.",
+    "label": "human"
+  },
+  {
+    "text": "The theory of punctuated equilibrium proposed by Niles Eldredge and Stephen Jay Gould suggests that evolutionary change is characterized by long periods of stasis interspersed with rare episodes of rapid speciation.",
+    "label": "human"
+  },
+  {
+    "text": "In legal philosophy, legal positivism asserts that the validity of law is determined solely by social facts and authoritative enactment, separating the legal question of what law is from the moral question of what law ought to be.",
+    "label": "human"
+  },
+  {
+    "text": "Our comparative analysis of solar photovoltaic efficiency under varying ambient temperatures demonstrated that silicon panel output voltage decreases by approximately 0.4 percent per degree Celsius rise in cell temperature.",
+    "label": "human"
+  },
+  {
+    "text": "In Sophocles's tragedy Antigone, the irreconcilable conflict between divine moral duty and human civil law highlights the tragic cost of inflexible political absolutism represented by King Creon.",
+    "label": "human"
+  },
+  {
+    "text": "The respiratory electron transport chain utilizes four multi-protein complexes in the inner mitochondrial membrane to pump protons into the intermembrane space, creating an electrochemical proton gradient that drives ATP synthase.",
+    "label": "human"
+  },
+  {
+    "text": "In behavioral finance, the disposition effect describes the tendency of retail investors to sell winning stock positions too early while holding onto depreciating loss-making positions for too long.",
+    "label": "human"
+  },
+  {
+    "text": "We tested the compressive strength of cylindrical concrete specimens cured for 7, 14, and 28 days according to ASTM C39 standards, observing a predictable non-linear increase in ultimate axial load capacity.",
+    "label": "human"
+  },
+  {
+    "text": "The collapse of the Bronze Age civilizations around 1200 BCE in the Eastern Mediterranean was driven by a confluence of systemic trade collapse, internal revolts, climate droughts, and Sea Peoples invasions.",
+    "label": "human"
+  },
+  {
+    "text": "In asynchronous JavaScript programming, Promises and async-await constructs allow developers to manage non-blocking I/O operations and avoid nested callback pyramids when fetching data from remote REST endpoints.",
+    "label": "human"
+  },
+  {
+    "text": "The bystander effect, famously studied by John Darley and Bibb Latan\u00e9, demonstrates that the presence of passive onlookers diminishes individual perceived responsibility during real-world emergency situations.",
+    "label": "human"
+  },
+  {
+    "text": "In fluid dynamics, the Reynolds number provides a dimensionless metric that predicts whether a fluid flowing through a circular pipe will exhibit smooth laminar flow or chaotic turbulent flow.",
+    "label": "human"
+  },
+  {
+    "text": "The Treaty of Utrecht in 1713 concluded the War of the Spanish Succession, establishing the principle of the European balance of power to prevent any single monarchy from dominating the continent.",
+    "label": "human"
+  },
+  {
+    "text": "In computer graphics, ray tracing simulates optical physics by tracing the paths of light rays from the camera plane through a three-dimensional virtual scene, calculating realistic reflections, refractions, and ambient occlusion.",
+    "label": "human"
+  },
+  {
+    "text": "During our undergraduate ecology fieldwork, we calculated the Shannon-Wiener diversity index for benthic macroinvertebrates across three sampling sites along a gradient of agricultural runoff pollution.",
+    "label": "human"
+  },
+  {
+    "text": "The Austrian School of economics, represented by Friedrich Hayek, argues that decentralized market prices serve as a vital communication mechanism coordinating dispersed knowledge that no central planning authority can replicate.",
+    "label": "human"
+  },
+  {
+    "text": "In James Joyce's A Portrait of the Artist as a Young Man, Stephen Dedalus's aesthetic epiphany on the Dublin beach signifies his conscious liberation from the restrictive bonds of Irish nationalism and strict religious dogma.",
+    "label": "human"
+  },
+  {
+    "text": "We verified Snell's law of optical refraction using a semicircular acrylic prism and a 632.8 nm helium-neon laser, calculating an index of refraction of 1.492 for the acrylic medium.",
+    "label": "human"
+  },
+  {
+    "text": "The Nuremberg Trials in 1945 established foundational legal precedents in international humanitarian law, codifying crimes against humanity, war crimes, and the crime of initiating aggressive war.",
+    "label": "human"
+  },
+  {
+    "text": "In modern operating systems, virtual memory uses hardware memory management units and paging tables to provide each running process with an isolated, contiguous address space while preventing memory access violations.",
+    "label": "human"
+  },
+  {
+    "text": "The self-determination theory developed by Edward Deci and Richard Ryan identifies autonomy, competence, and relatedness as three fundamental human psychological needs essential for sustaining intrinsic motivation.",
+    "label": "human"
+  },
+  {
+    "text": "In inorganic coordination chemistry, crystal field theory explains the electronic structures, colors, and magnetic properties of transition metal complexes through the electrostatic splitting of degenerate d-orbital energy levels.",
+    "label": "human"
+  },
+  {
+    "text": "The Meiji Restoration of 1868 transformed Japan from a decentralized feudal shogunate into a centralized modern industrial state through the rapid adoption of Western legal, military, and educational systems.",
+    "label": "human"
+  },
+  {
+    "text": "We characterized the frequency response of active second-order Butterworth low-pass filters, verifying that the gain rolls off at minus 40 dB per decade beyond the design cutoff frequency of 10 kHz.",
+    "label": "human"
+  },
+  {
+    "text": "In post-colonial literary theory, Edward Said's Orientalism demonstrates how Western literary and scholarly discourses constructed stereotypical representations of Eastern societies to legitimize colonial dominance.",
+    "label": "human"
+  },
+  {
+    "text": "In conclusion, the multifaceted integration of autonomous systems in modern logistics comprehensively underscores the transformative potential of artificial intelligence. Furthermore, it is evident that technological agility plays a crucial role in optimizing global supply chains.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, the complex interplay between environmental policy and corporate governance highlights the imperative for sustainable industrial practices. Delving into these nuanced dynamics reveals that strategic alignment is paramount for long-term ecological stewardship.",
+    "label": "ai"
+  },
+  {
+    "text": "This essay comprehensively evaluates the sociopolitical ramifications of smart city infrastructures in the twenty-first century. It is essential to recognize that while internet-of-things devices enhance civic efficiency, institutions must navigate data governance thoughtfully.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, contemporary pedagogical methodologies must leverage personalized digital learning platforms to foster equitable student achievement. By deploying adaptive assessment algorithms, educational institutions can cater to diverse learning styles.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, the transition toward circular economic models represents an unprecedented opportunity to minimize industrial waste and conserve natural resources. A holistic framework integrating public policy with private sector innovation is vital.",
+    "label": "ai"
+  },
+  {
+    "text": "It is important to remember that ethical considerations must remain paramount during the deployment of autonomous vehicles. As algorithmic decision-making becomes integrated into urban transit, proactive safety frameworks are indispensable.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the profound nuances of international environmental diplomacy demonstrates that multilateral treaties play a vital role in curbing global emissions and establishing resilient climate adaptation mechanisms.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's rapidly evolving technological landscape, enterprise organizations must navigate the complexities of distributed cloud infrastructures. Implementing end-to-end encryption serves as a testament to an enterprise's commitment to privacy.",
+    "label": "ai"
+  },
+  {
+    "text": "A nuanced examination of public health epidemiology highlights that early intervention strategies and community engagement play a pivotal role in mitigating infectious disease transmission across vulnerable populations.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the integration of computational genomics in oncology offers groundbreaking precision for targeted therapies, underscoring the necessity of collaborative translational research between clinicians and data scientists.",
+    "label": "ai"
+  },
+  {
+    "text": "In conclusion, the historical evolution of democratic governance comprehensively reflects the vital importance of judicial independence and the preservation of fundamental human rights within constitutional frameworks.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, machine learning algorithms applied to climate modeling facilitate accurate predictive simulations of extreme weather events, enabling proactive disaster risk reduction and community preparedness.",
+    "label": "ai"
+  },
+  {
+    "text": "This research comprehensively explores the macroeconomic implications of digital currency adoption, highlighting how central bank digital currencies can enhance payment efficiency while requiring robust regulatory safeguards.",
+    "label": "ai"
+  },
+  {
+    "text": "It is evident that the strategic implementation of continuous integration and continuous deployment pipelines in software engineering optimizes delivery velocity and ensures architectural reliability.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, examining the multifaceted dimensions of cognitive psychology reveals the intricate relationship between neural processing and behavioral adaptation, demonstrating the remarkable resilience of human cognition.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the architecture of renewable microgrids emphasizes the critical role of battery energy storage systems in stabilizing decentralized power grids during peak demand fluctuations.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the convergence of quantum cryptography and satellite communications represents a revolutionary milestone in secure global telecommunications networks.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's interconnected digital economy, ethical leadership serves as a testament to an organization's unwavering dedication to social responsibility, transparent governance, and stakeholder value.",
+    "label": "ai"
+  },
+  {
+    "text": "A comprehensive analysis of consumer trends in e-commerce indicates that personalized recommendation engines profoundly influence purchasing decisions and long-term brand engagement.",
+    "label": "ai"
+  },
+  {
+    "text": "Ultimately, the multifaceted synergy between robotic automation and precision agriculture continues to redefine global food security, ensuring sustainable crop yields in the face of changing climate conditions.",
+    "label": "ai"
+  },
+  {
+    "text": "Our engineering group tested three bridge truss designs using wood structural models in the department testing frame. In conclusion, the multifaceted testing comprehensively demonstrated that the Pratt truss sustained the highest load-to-weight ratio, though construction defects in joint gluing caused premature failure on one specimen.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The history paper examines the political career of Winston Churchill during the 1930s. Historical archives and parliamentary debate transcripts played a crucial role in analyzing his warnings about rearmament, but his controversial domestic policies are often overlooked in popular biographies.",
+    "label": "hybrid"
+  },
+  {
+    "text": "When evaluating the impact of flipped classroom models on student engagement in university chemistry courses, our study surveyed 140 undergraduates. Furthermore, it is evident that pre-recorded video lectures helped students prepare better for active problem-solving sessions.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We measured the rate of heat transfer through various building insulation materials using a guarded hot plate apparatus. In summary, our experimental data confirmed that aerogel blankets achieved the lowest thermal conductivity, matching theoretical heat transfer calculations.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The literature essay discusses the portrayal of moral corruption in Oscar Wilde's The Picture of Dorian Gray. A nuanced examination reveals that Dorian's aesthetic pursuit of pleasure without ethical consequence leads inevitably to his psychological disintegration.",
+    "label": "hybrid"
+  },
+  {
+    "text": "During our economics seminar, we analyzed the macroeconomic effects of quantitative easing programs. Delving into the complex interplay between central bank balance sheet expansion and asset price inflation shows that while financial markets rallied, wealth inequality increased noticeably.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We optimized the back-end database queries for our university course registration portal by implementing Redis caching for course catalog listings. Overall, server response times decreased from 320 ms to 18 ms during high-traffic registration windows.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The biology lab investigated the effect of varying salinity levels on the germination rate of halophytic plant seeds. In conclusion, the experimental results comprehensively showed that germination decreased significantly when sodium chloride concentration exceeded 200 millimolar.",
+    "label": "hybrid"
+  },
+  {
+    "text": "In our sociology research project, we surveyed 90 college students regarding their sleep schedules and caffeine consumption. Furthermore, it is important to note that students reporting high stress levels consumed significantly more energy drinks before exam deadlines.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The physics lab measured the charge-to-mass ratio of the electron using a Thomson e/m tube with Helmholtz coils. In summary, our calculated value was 1.74 times 10 to the 11th coulombs per kilogram, which had a percent error of only 1.1 percent from the accepted physical constant.",
+    "label": "hybrid"
+  },
+  {
+    "text": "In conclusion, the multifaceted benefits of precision medicine comprehensively highlight the transformative power of bioinformatics in modern healthcare systems. Furthermore, it is evident that genetic sequencing plays a vital role in tailoring oncological treatments.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, the complex interplay between fiscal policy and socioeconomic equity underscores the necessity of inclusive economic reforms. Delving into this nuanced framework reveals that progressive taxation serves as a testament to equitable wealth distribution.",
+    "label": "ai"
+  },
+  {
+    "text": "This research comprehensively evaluates the ethical dimensions of facial recognition technology in public spaces. It is critical to recognize that while biometric surveillance enhances security, institutions must navigate civil liberty protections with utmost diligence.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, contemporary cloud computing paradigms must implement multi-region data redundancy to ensure business continuity. By adopting automated failover mechanisms, organizations can mitigate disaster risks while preserving operational uptime.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, the transition toward zero-emission transportation networks represents an unprecedented opportunity to combat global climate change. A collaborative strategy that unites public infrastructure with automotive innovation is paramount.",
+    "label": "ai"
+  },
+  {
+    "text": "It is important to remember that rigorous peer review must remain the cornerstone of scientific validation. As open-access publishing models expand, robust editorial standards are indispensable for maintaining academic integrity.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the profound dynamics of behavioral economics demonstrates that behavioral nudges play a pivotal role in promoting sustainable consumer choices without imposing coercive legal mandates.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's rapidly evolving cybersecurity landscape, enterprises must implement continuous threat hunting protocols. Proactive vulnerability scanning serves as a testament to an organization's commitment to safeguarding intellectual property.",
+    "label": "ai"
+  },
+  {
+    "text": "A nuanced examination of modern architectural design illustrates how biophilic design principles and energy-efficient materials play a crucial role in lowering carbon footprints while promoting occupant well-being.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the integration of deep learning in automated speech recognition has unlocked remarkable accessibility features for individuals with hearing impairments, driving digital inclusion across society.",
+    "label": "ai"
+  },
+  {
+    "text": "In conclusion, the philosophical legacy of the Enlightenment comprehensively shaped modern democratic theory, constitutional rights, and the separation of religious institutions from secular governance.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, quantum dot technology has revolutionized display engineering and medical bio-imaging, offering unprecedented color accuracy and luminous efficiency across optoelectronic devices.",
+    "label": "ai"
+  },
+  {
+    "text": "This essay comprehensively analyzes the geopolitical consequences of space exploration commercialization, highlighting how public-private partnerships play a pivotal role in accelerating lunar and Martian missions.",
+    "label": "ai"
+  },
+  {
+    "text": "It is evident that the strategic implementation of enterprise resource planning platforms streamlines inventory management, financial reporting, and cross-departmental communication in multinational corporations.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, examining the evolutionary adaptations of extremophilic microorganisms reveals the remarkable capacity of life to thrive under extreme temperatures, pressures, and chemical environments.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the mechanisms of immunological memory illustrates how memory B cells and long-lived plasma cells provide rapid, robust defense responses upon secondary pathogen re-exposure.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the convergence of edge computing and internet-of-things sensors facilitates real-time telemetry processing in smart manufacturing, reducing network latency and bandwidth overhead.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's competitive global marketplace, authentic brand authenticity serves as a testament to an organization's dedication to customer-centric innovation, ethical sourcing, and environmental sustainability.",
+    "label": "ai"
+  },
+  {
+    "text": "A comprehensive analysis of renewable microgrids indicates that decentralized energy storage systems significantly enhance grid resilience against catastrophic weather events and power outages.",
+    "label": "ai"
+  },
+  {
+    "text": "Ultimately, the multifaceted integration of synthetic biology in pharmaceutical production continues to accelerate the synthesis of complex therapeutic proteins and novel antimicrobial agents.",
+    "label": "ai"
+  },
+  {
+    "text": "In conclusion, the nuanced examination of modern labor economics comprehensively explores how automation and artificial intelligence impact wage distributions and occupational mobility across diverse industrial sectors.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, it is evident that proactive corporate compliance programs play a vital role in preventing anti-competitive behavior, fostering transparent market competition and safeguarding consumer welfare.",
+    "label": "ai"
+  },
+  {
+    "text": "Moreover, the complex interplay between international human rights treaties and sovereign domestic law demonstrates that multinational legal frameworks serve as a testament to global humanitarian commitments.",
+    "label": "ai"
+  },
+  {
+    "text": "This study comprehensively investigates the hydrological dynamics of urban watershed management, emphasizing that permeable pavements and rain gardens plays a crucial role in mitigating stormwater runoff.",
+    "label": "ai"
+  },
+  {
+    "text": "In summary, the transition toward sustainable agricultural practices represents an indispensable strategy for preserving soil fertility and protecting global water tables for future generations.",
+    "label": "ai"
+  },
+  {
+    "text": "Delving into the structural paradigms of modern distributed systems reveals that microservices architectures offer superior horizontal scalability, fault tolerance, and independent service deployment.",
+    "label": "ai"
+  },
+  {
+    "text": "It is important to note that ethical frameworks governing biomedical research must continuously adapt to emerging biotechnologies, ensuring that informed consent and patient autonomy remain inviolable.",
+    "label": "ai"
+  },
+  {
+    "text": "Furthermore, the implementation of predictive maintenance algorithms in industrial robotics minimizes unscheduled downtime, optimizes component lifecycle management, and reduces operational maintenance costs.",
+    "label": "ai"
+  },
+  {
+    "text": "In today's hyper-connected information ecosystem, media literacy education serves as a testament to a democratic society's resilience against digital disinformation and algorithmic polarization.",
+    "label": "ai"
+  },
+  {
+    "text": "A nuanced analysis of cognitive ergonomics demonstrates that user interface design plays a pivotal role in reducing mental workload and preventing human error in high-consequence operational environments.",
+    "label": "ai"
+  },
+  {
+    "text": "Our research group collected air quality data across eight downtown traffic intersections over three weeks. In conclusion, the multifaceted analysis comprehensively revealed that particulate matter concentrations spiked during morning rush hours, but high wind speeds on Friday afternoons lowered pollution levels by almost 40 percent.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The assignment required us to write a critical analysis of Shakespeare's The Tempest. Modern post-colonial interpretations played a crucial role in our group discussion regarding Caliban's linguistic resistance, but traditional critics still view the play primarily as an allegorical celebration of theatrical creation.",
+    "label": "hybrid"
+  },
+  {
+    "text": "When evaluating the effectiveness of peer tutoring in undergraduate physics courses, we tracked the exam scores of 110 students. Furthermore, it is evident that students who attended weekly tutoring sessions scored an average of 1.4 letter grades higher on the final exam.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We measured the heat of combustion of benzoic acid using an oxygen bomb calorimeter in the physical chemistry lab. In summary, our experimental data confirmed that the calorimeter heat capacity was 10.45 kilojoules per degree Celsius, which matches the standardized calibration values.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The literary essay discusses the existential dread portrayed in Franz Kafka's The Metamorphosis. A nuanced examination reveals that Gregor Samsa's physical transformation into an insect is primarily a reflection of his emotional exhaustion and dehumanizing economic exploitation by his family.",
+    "label": "hybrid"
+  },
+  {
+    "text": "During our economics seminar, we analyzed the impact of minimum wage increases on small retail businesses. Delving into the complex interplay between labor costs and employee turnover shows that while hourly wages increased, reduced staff turnover helped offset higher payroll expenses.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We configured a containerized microservices application using Docker Compose with Redis caching and PostgreSQL. Overall, the system sustained over 1,200 simulated HTTP requests per second with zero dropped database transactions.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The chemistry lab investigated the rate of reaction between sodium thiosulfate and hydrochloric acid at various temperatures. In conclusion, our experimental measurements comprehensively demonstrated that reaction rate doubles for every 10 degree Celsius increase in temperature.",
+    "label": "hybrid"
+  },
+  {
+    "text": "In our psychology project, we tested the impact of background music genres on reading comprehension speed among 60 volunteers. Furthermore, it is important to note that instrumental classical music produced significantly higher comprehension scores than music with vocal lyrics.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The civil engineering lab evaluated the permeability of sandy and clay soil samples using constant head permeameters. In summary, the sandy soil exhibited hydraulic conductivity three orders of magnitude higher than the compacted clay sample.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We analyzed the network packet traces from our department router using Python and Scapy. In conclusion, the multifaceted diagnostic comprehensively identified an abnormal volume of ARP broadcast requests caused by a misconfigured switch loop on the second floor.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The history paper examines the foreign policy decisions of the Kennedy administration during the Cuban Missile Crisis of 1962. Historical records and declassified White House audio tapes played a crucial role in showing how naval quarantine was chosen over direct airstrikes.",
+    "label": "hybrid"
+  },
+  {
+    "text": "When testing the efficiency of three different sorting algorithms on partially sorted integer arrays, we discovered that insertion sort consistently outperformed quicksort on arrays with fewer than 30 elements.",
+    "label": "hybrid"
+  },
+  {
+    "text": "Our biology team extracted chlorophyll a and b pigments from spinach leaves using cold acetone extraction followed by paper chromatography. In summary, the calculated Rf values were 0.45 for chlorophyll b and 0.58 for chlorophyll a.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The philosophy paper explores Thomas Hobbes's Leviathan and the concept of the social contract. A nuanced examination reveals that Hobbes justifies absolute sovereign authority as the only logical alternative to the chaotic state of nature.",
+    "label": "hybrid"
+  },
+  {
+    "text": "During our marketing research survey of 180 university students, we examined brand loyalty in the athletic footwear market. Delving into consumer preferences shows that sustainability messaging is increasingly influential among younger buyers.",
+    "label": "hybrid"
+  },
+  {
+    "text": "We measured the specific heat capacity of aluminum, brass, and lead metal cylinders using a dual-cup calorimeter. Overall, our experimental specific heat for aluminum was 0.89 Joules per gram Celsius, representing a percent error of only 1.2 percent.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The literature review investigates the evolution of feminist themes in nineteenth-century British literature. In conclusion, novels like Charlotte Bront\u00eb's Jane Eyre comprehensively challenge conventional domestic expectations through heroines who demand intellectual and moral equality.",
+    "label": "hybrid"
+  },
+  {
+    "text": "In our computer architecture lab, we simulated cache hit rates on direct-mapped versus 4-way set associative L1 caches. Furthermore, it is evident that set associativity reduced cache conflict misses by over 28 percent for matrix multiplication workloads.",
+    "label": "hybrid"
+  },
+  {
+    "text": "The ecology lab tested the nitrate and phosphate levels in water samples taken from five points along the local river. In summary, nutrient concentrations were highest immediately downstream from the municipal wastewater outflow point.",
+    "label": "hybrid"
+  }
 ]

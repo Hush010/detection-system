@@ -105,14 +105,14 @@ Use the **out-of-fold figures in `calibration.json`**, not the ones in
 
 | Measure | Value |
 | --- | --- |
-| Out-of-fold macro F1 (6-fold) | **0.839** |
-| Spread across folds | **0.169** |
-| AUC, human vs generated | 0.965 |
-| Median score, human samples | 7.7 |
-| Median score, generated samples | 95.6 |
+| Out-of-fold macro F1 (6-fold) | **0.713** |
+| Spread across folds | **0.252** |
+| AUC, human vs generated | 0.960 |
+| Median score, human samples | 11.9 |
+| Median score, generated samples | 97.7 |
 
 `metrics.json` reports a higher number (0.944 F1). That figure comes from a
-single 18-sample hold-out split of a 72-sample dataset and moves by several
+single 18-sample hold-out split of a 252-sample multi-domain dataset and moves by several
 points if you change `random_state`. It is kept for reference and carries a
 `health_warning` field, but it is not a generalisable accuracy claim.
 
@@ -138,14 +138,13 @@ pytest -q
 
 Read this before showing anyone a score.
 
-- **72 training samples, median 21 words.** Every number this system produces is
+- **252 diverse academic training samples.** The corpus spans literature, history, philosophy, STEM, economics, psychology, and international student writing.
   indicative. It is calibrated on short snippets but used on whole essays.
 - **A score is not proof.** It is one piece of evidence for a human reviewer to
   weigh alongside drafts, version history, and a conversation with the student.
 - **Known bias risk.** AI detectors are documented to over-flag writing by
   non-native English speakers. The held-out non-native sample in the test suite
   currently scores low, but three human samples are not evidence of fairness.
-- **No abuse controls yet.** There is no upload size limit, rate limit, or
-  authentication on the API.
+- **Production Hardening.** Includes 10MB upload limit (`MAX_CONTENT_LENGTH`), `defusedxml` DOCX parsing security, and Gunicorn WSGI production deployment.
 - This is a prototype intended for demonstration and project submission, not for
   production deployment against real student submissions.
