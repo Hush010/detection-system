@@ -3,542 +3,903 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI Content Detector</title>
+    <title>AI Content Detector | Calibrated Analysis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <style>
       :root {
         color-scheme: light;
-        --bg-main: #eff3fb;
-        --bg-radial-1: rgba(59, 130, 246, 0.16);
-        --bg-radial-2: rgba(16, 185, 129, 0.14);
+        --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        /* Light Palette */
+        --bg-page: #f8fafc;
+        --bg-radial-1: rgba(99, 102, 241, 0.08);
+        --bg-radial-2: rgba(14, 165, 233, 0.06);
         --card-bg: #ffffff;
-        --card-border: rgba(148, 163, 184, 0.18);
-        --card-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
-        --text-main: #0f172a;
-        --text-muted: #475569;
-        --text-subtle: #64748b;
+        --card-border: #e2e8f0;
+        --card-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+
         --input-bg: #f8fafc;
         --input-border: #cbd5e1;
         --input-text: #0f172a;
-        --upload-bg: linear-gradient(135deg, #f0f9ff, #f0fdf4);
-        --upload-border: #0ea5e9;
-        --upload-hover: linear-gradient(135deg, #e0f2fe, #dcfce7);
-        --upload-text: #0369a1;
-        --file-display-bg: #f1f5f9;
-        --file-display-text: #334155;
-        --badge-bg: #eff6ff;
-        --badge-border: #bfdbfe;
-        --badge-text: #0369a1;
-        --result-bg: linear-gradient(180deg, rgba(14, 165, 233, 0.12), rgba(255, 255, 255, 0.95));
-        --result-border: rgba(14, 165, 233, 0.18);
-        --pill-bg: #f8fafc;
-        --pill-border: rgba(148, 163, 184, 0.18);
-        --pill-text: #0f172a;
-        --spinner-card-bg: #ffffff;
+        --input-focus-border: #4f46e5;
+        --input-focus-ring: rgba(79, 70, 229, 0.12);
+
+        --tab-bg: #f1f5f9;
+        --tab-active-bg: #ffffff;
+        --tab-active-text: #0f172a;
+        --tab-inactive-text: #64748b;
+        --tab-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+
+        --dropzone-bg: #f8fafc;
+        --dropzone-border: #cbd5e1;
+        --dropzone-hover-bg: #f1f5f9;
+        --dropzone-hover-border: #4f46e5;
+
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #64748b;
+
+        --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+        --primary-glow: rgba(79, 70, 229, 0.25);
+        --primary-hover-glow: rgba(79, 70, 229, 0.35);
+
         --toggle-bg: #ffffff;
-        --toggle-border: #cbd5e1;
-        --toggle-hover: #f1f5f9;
-        --brand-color: #1d4ed8;
+        --toggle-border: #e2e8f0;
+        --toggle-hover-bg: #f1f5f9;
+
+        --badge-neutral-bg: #f1f5f9;
+        --badge-neutral-text: #475569;
+
+        --meter-track: #e2e8f0;
+        --stat-card-bg: #f8fafc;
+        --stat-card-border: #e2e8f0;
+        --notice-bg: #f8fafc;
+        --notice-border: #e2e8f0;
       }
 
       :root.dark-mode {
         color-scheme: dark;
-        --bg-main: #0f172a;
-        --bg-radial-1: rgba(59, 130, 246, 0.08);
-        --bg-radial-2: rgba(16, 185, 129, 0.06);
-        --card-bg: #1e293b;
-        --card-border: rgba(71, 85, 105, 0.35);
-        --card-shadow: 0 22px 55px rgba(0, 0, 0, 0.4);
-        --text-main: #f1f5f9;
-        --text-muted: #cbd5e1;
-        --text-subtle: #94a3b8;
-        --input-bg: #0b1329;
-        --input-border: #475569;
-        --input-text: #f1f5f9;
-        --upload-bg: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.08));
-        --upload-border: #38bdf8;
-        --upload-hover: linear-gradient(135deg, rgba(14, 165, 233, 0.22), rgba(16, 185, 129, 0.16));
-        --upload-text: #7dd3fc;
-        --file-display-bg: #334155;
-        --file-display-text: #e2e8f0;
-        --badge-bg: rgba(14, 165, 233, 0.15);
-        --badge-border: rgba(56, 189, 248, 0.3);
-        --badge-text: #7dd3fc;
-        --result-bg: linear-gradient(180deg, rgba(14, 165, 233, 0.12), rgba(30, 41, 59, 0.95));
-        --result-border: rgba(56, 189, 248, 0.25);
-        --pill-bg: #0f172a;
-        --pill-border: rgba(71, 85, 105, 0.4);
-        --pill-text: #f1f5f9;
-        --spinner-card-bg: #1e293b;
-        --toggle-bg: #1e293b;
-        --toggle-border: #475569;
-        --toggle-hover: #334155;
-        --brand-color: #60a5fa;
+
+        /* Modern Obsidian & Zinc Dark Palette */
+        --bg-page: #080c14;
+        --bg-radial-1: rgba(99, 102, 241, 0.12);
+        --bg-radial-2: rgba(14, 165, 233, 0.08);
+        --card-bg: #0f172a;
+        --card-border: rgba(255, 255, 255, 0.08);
+        --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+
+        --input-bg: #141e33;
+        --input-border: #24324f;
+        --input-text: #f8fafc;
+        --input-focus-border: #6366f1;
+        --input-focus-ring: rgba(99, 102, 241, 0.2);
+
+        --tab-bg: #0c1322;
+        --tab-active-bg: #1e293b;
+        --tab-active-text: #f8fafc;
+        --tab-inactive-text: #8292ab;
+        --tab-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+        --dropzone-bg: #111a2e;
+        --dropzone-border: #24324f;
+        --dropzone-hover-bg: #16223d;
+        --dropzone-hover-border: #6366f1;
+
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+
+        --primary-gradient: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%);
+        --primary-glow: rgba(99, 102, 241, 0.35);
+        --primary-hover-glow: rgba(99, 102, 241, 0.5);
+
+        --toggle-bg: #131c31;
+        --toggle-border: rgba(255, 255, 255, 0.08);
+        --toggle-hover-bg: #1c2742;
+
+        --badge-neutral-bg: #1e293b;
+        --badge-neutral-text: #94a3b8;
+
+        --meter-track: #1e293b;
+        --stat-card-bg: #131c31;
+        --stat-card-border: rgba(255, 255, 255, 0.06);
+        --notice-bg: #111a2e;
+        --notice-border: rgba(255, 255, 255, 0.06);
       }
 
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
       body {
-        margin: 0;
         min-height: 100vh;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top left, var(--bg-radial-1), transparent 34%),
-                    radial-gradient(circle at bottom right, var(--bg-radial-2), transparent 28%),
-                    var(--bg-main);
-        color: var(--text-main);
-        transition: background 0.3s ease, color 0.3s ease;
+        font-family: var(--font-sans);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(circle at 15% 15%, var(--bg-radial-1), transparent 35%),
+          radial-gradient(circle at 85% 85%, var(--bg-radial-2), transparent 35%);
+        background-attachment: fixed;
+        color: var(--text-primary);
+        line-height: 1.5;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
 
-      .page {
-        width: min(1200px, 100%);
+      .container {
+        width: min(900px, 100% - 32px);
         margin: 0 auto;
-        padding: 20px 20px 40px;
+        padding: 24px 0 60px;
       }
 
-      .topbar {
+      /* ── Top Navigation Bar ── */
+      .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 20px;
-        margin-bottom: 8px;
+        padding-bottom: 24px;
         border-bottom: 1px solid var(--card-border);
       }
 
       .brand {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 1.2rem;
-        letter-spacing: 0.05em;
-        font-weight: 800;
-        color: var(--brand-color);
-        text-transform: uppercase;
+        gap: 10px;
         text-decoration: none;
+        color: var(--text-primary);
       }
 
       .brand-icon {
-        font-size: 1.3rem;
-      }
-
-      .brand .accent {
-        color: #0ea5e9;
-      }
-
-      .theme-toggle {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1px solid var(--toggle-border);
-        background: var(--toggle-bg);
-        cursor: pointer;
-        transition: all 0.25s ease;
-        color: var(--text-main);
-        font-size: 1.25rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: var(--primary-gradient);
+        color: white;
+        font-size: 1.15rem;
+        box-shadow: 0 4px 14px var(--primary-glow);
       }
 
-      .theme-toggle:hover {
-        background: var(--toggle-hover);
-        transform: scale(1.08);
+      .brand-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
       }
 
-      .theme-toggle:active {
-        transform: scale(0.95);
+      .brand-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: var(--badge-neutral-bg);
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        margin-left: 6px;
       }
 
-      .hero {
-        margin: 24px 0 28px;
-        display: grid;
+      .nav-actions {
+        display: flex;
+        align-items: center;
         gap: 12px;
       }
 
+      .theme-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--toggle-bg);
+        border: 1px solid var(--toggle-border);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 1.15rem;
+      }
+
+      .theme-btn:hover {
+        background: var(--toggle-hover-bg);
+        transform: scale(1.05);
+      }
+
+      /* ── Hero Section ── */
+      .hero {
+        margin: 36px 0 28px;
+        text-align: center;
+      }
+
       .hero h1 {
-        margin: 0;
-        font-size: clamp(2rem, 3.5vw, 3.2rem);
-        line-height: 1.1;
+        font-size: clamp(2.2rem, 4vw, 3rem);
         font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .hero-gradient {
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       .hero p {
-        margin: 0;
-        max-width: 680px;
         font-size: 1.05rem;
-        color: var(--text-muted);
-        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 580px;
+        margin: 0 auto;
       }
 
-      .panel {
-        display: grid;
-        gap: 16px;
-      }
-
-      .panel-card {
+      /* ── Main Workspace Card ── */
+      .workspace-card {
         background: var(--card-bg);
-        border-radius: 28px;
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
         padding: 24px;
         box-shadow: var(--card-shadow);
-        border: 1px solid var(--card-border);
-        transition: background 0.3s ease, border-color 0.3s ease;
+        transition: all 0.3s ease;
       }
 
-      .panel-card h2 {
-        margin: 0 0 8px;
-        font-size: 1.25rem;
-        font-weight: 700;
-      }
-
-      .panel-card p.subtitle {
-        margin: 0 0 16px;
-        color: var(--text-muted);
-        line-height: 1.6;
-        font-size: 0.95rem;
-      }
-
-      .form-shell {
-        display: grid;
-        gap: 14px;
-      }
-
-      .message-box {
-        padding: 12px 16px;
-        border-radius: 16px;
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-
-      .message-box.info {
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
-        color: #0369a1;
-      }
-
-      :root.dark-mode .message-box.info {
-        background: rgba(14, 165, 233, 0.12);
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        color: #7dd3fc;
-      }
-
-      .message-box.warning {
-        background: #fef3c7;
-        border: 1px solid #fde68a;
-        color: #92400e;
-      }
-
-      :root.dark-mode .message-box.warning {
-        background: rgba(245, 158, 11, 0.12);
-        border: 1px solid rgba(245, 158, 11, 0.3);
-        color: #fde68a;
-      }
-
-      .message-box.success {
-        background: #ecfdf5;
-        border: 1px solid #a7f3d0;
-        color: #065f46;
-      }
-
-      :root.dark-mode .message-box.success {
-        background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(16, 185, 129, 0.3);
-        color: #6ee7b7;
-      }
-
-      textarea {
-        width: 100%;
-        min-height: 160px;
-        border-radius: 20px;
-        border: 1px solid var(--input-border);
-        padding: 16px;
-        font-family: inherit;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: var(--input-text);
-        background: var(--input-bg);
-        resize: vertical;
-        transition: background 0.3s ease, border-color 0.25s ease, color 0.3s ease;
-      }
-
-      textarea:focus {
-        outline: none;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
-      }
-
-      .file-upload-wrapper {
-        position: relative;
-        overflow: hidden;
-      }
-
-      #fileInput {
-        position: absolute;
-        left: -9999px;
-      }
-
-      .file-upload-label {
+      /* ── Segmented Tabs ── */
+      .tabs-header {
         display: flex;
+        gap: 6px;
+        background: var(--tab-bg);
+        padding: 5px;
+        border-radius: 14px;
+        margin-bottom: 20px;
+      }
+
+      .tab-btn {
+        flex: 1;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        padding: 14px 20px;
-        background: var(--upload-bg);
-        border: 2px dashed var(--upload-border);
-        border-radius: 16px;
+        gap: 8px;
+        padding: 10px 16px;
+        font-family: inherit;
+        font-size: 0.92rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        background: transparent;
+        color: var(--tab-inactive-text);
         cursor: pointer;
-        transition: all 0.25s ease;
-        color: var(--upload-text);
-        font-weight: 500;
-        font-size: 0.96rem;
+        transition: all 0.2s ease;
       }
 
-      .file-upload-label:hover {
-        background: var(--upload-hover);
-        border-color: #2563eb;
-        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
+      .tab-btn.active {
+        background: var(--tab-active-bg);
+        color: var(--tab-active-text);
+        box-shadow: var(--tab-shadow);
       }
 
-      .file-upload-label:active {
-        transform: scale(0.98);
-      }
-
-      .file-name-display {
-        margin-top: 8px;
-        font-size: 0.9rem;
-        color: var(--file-display-text);
-        padding: 8px 12px;
-        background: var(--file-display-bg);
-        border-radius: 12px;
+      .tab-panel {
         display: none;
       }
 
-      .file-name-display.show {
+      .tab-panel.active {
         display: block;
       }
 
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        align-items: center;
+      /* ── Textarea & Editor ── */
+      .editor-wrapper {
+        position: relative;
       }
 
-      .btn-primary {
+      textarea.text-input {
+        width: 100%;
+        min-height: 220px;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 16px;
+        padding: 18px;
+        font-family: inherit;
+        font-size: 0.96rem;
+        line-height: 1.65;
+        color: var(--input-text);
+        resize: vertical;
+        transition: all 0.2s ease;
+      }
+
+      textarea.text-input:focus {
+        outline: none;
+        border-color: var(--input-focus-border);
+        box-shadow: 0 0 0 3px var(--input-focus-ring);
+      }
+
+      .editor-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 0.85rem;
+      }
+
+      .word-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: var(--badge-neutral-bg);
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+      }
+
+      .word-badge.ready {
+        background: rgba(16, 185, 129, 0.12);
+        color: #10b981;
+      }
+
+      .word-badge.warning {
+        background: rgba(245, 158, 11, 0.12);
+        color: #f59e0b;
+      }
+
+      .clear-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-family: inherit;
+        font-size: 0.85rem;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .clear-btn:hover {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+      }
+
+      /* ── File Upload Dropzone ── */
+      .dropzone {
+        border: 2px dashed var(--dropzone-border);
+        background: var(--dropzone-bg);
+        border-radius: 16px;
+        padding: 40px 24px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .dropzone:hover, .dropzone.dragover {
+        border-color: var(--dropzone-hover-border);
+        background: var(--dropzone-hover-bg);
+      }
+
+      .dropzone-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        background: var(--primary-gradient);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 12px var(--primary-glow);
+      }
+
+      .dropzone h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .dropzone p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .file-preview-card {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 14px;
+        padding: 14px 18px;
+        margin-top: 14px;
+      }
+
+      .file-preview-card.show {
+        display: flex;
+      }
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .file-icon {
+        font-size: 1.6rem;
+      }
+
+      .file-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .file-meta {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .remove-file-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .remove-file-btn:hover {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+      }
+
+      /* ── Action Trigger ── */
+      .action-row {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .analyze-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: 8px;
+        width: 100%;
         padding: 14px 28px;
-        border-radius: 999px;
+        border-radius: 14px;
         border: none;
-        font-weight: 600;
+        font-family: inherit;
         font-size: 1rem;
+        font-weight: 700;
         cursor: pointer;
-        background: linear-gradient(135deg, #2563eb, #0ea5e9);
+        background: var(--primary-gradient);
         color: white;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+        box-shadow: 0 6px 20px var(--primary-glow);
+        transition: all 0.2s ease;
       }
 
-      .btn-primary:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+      .analyze-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px var(--primary-hover-glow);
       }
 
-      .btn-primary:active {
+      .analyze-btn:active {
         transform: translateY(0);
       }
 
-      .score-badge {
-        margin-left: auto;
-        display: inline-flex;
+      .analyze-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* ── Notification / Alerts ── */
+      .alert-box {
+        display: none;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        margin-top: 16px;
+      }
+
+      .alert-box.show {
+        display: flex;
         align-items: center;
         gap: 10px;
-        color: var(--badge-text);
-        background: var(--badge-bg);
-        border: 1px solid var(--badge-border);
-        padding: 12px 18px;
-        border-radius: 16px;
-        font-weight: 600;
-        font-size: 0.95rem;
       }
 
-      .result-card {
-        display: grid;
-        gap: 14px;
-        padding: 20px;
-        border-radius: 24px;
-        background: var(--result-bg);
-        border: 1px solid var(--result-border);
+      .alert-box.warning {
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        color: #f59e0b;
       }
 
-      .result-card h3 {
-        margin: 0;
-        font-size: 1.25rem;
+      .alert-box.info {
+        background: rgba(14, 165, 233, 0.12);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        color: #0284c7;
+      }
+
+      :root.dark-mode .alert-box.info {
+        color: #38bdf8;
+      }
+
+      /* ── Result Card ── */
+      .result-container {
+        display: none;
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--card-border);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      .result-container.show {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .result-header {
         display: flex;
         align-items: center;
-        gap: 8px;
-      }
-
-      .result-details {
-        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 12px;
       }
 
-      .detail-pill {
+      .risk-pill {
         display: inline-flex;
-        gap: 8px;
         align-items: center;
-        padding: 8px 14px;
+        gap: 8px;
+        padding: 8px 16px;
         border-radius: 999px;
-        background: var(--pill-bg);
-        border: 1px solid var(--pill-border);
-        color: var(--pill-text);
-        font-size: 0.9rem;
-        font-weight: 500;
+        font-size: 0.95rem;
+        font-weight: 700;
       }
 
-      .label-low { color: #10b981; font-weight: 700; }
-      .label-medium { color: #f59e0b; font-weight: 700; }
-      .label-high { color: #ef4444; font-weight: 700; }
-      .label-inconclusive { color: var(--text-subtle); font-weight: 700; }
+      .risk-pill.low {
+        background: rgba(16, 185, 129, 0.14);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
 
+      .risk-pill.review {
+        background: rgba(245, 158, 11, 0.14);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.25);
+      }
+
+      .risk-pill.high {
+        background: rgba(244, 63, 94, 0.14);
+        color: #f43f5e;
+        border: 1px solid rgba(244, 63, 94, 0.25);
+      }
+
+      .risk-pill.inconclusive {
+        background: rgba(148, 163, 184, 0.14);
+        color: var(--text-secondary);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+      }
+
+      .score-display-value {
+        font-size: 1.6rem;
+        font-weight: 800;
+        font-family: var(--font-mono);
+        letter-spacing: -0.03em;
+      }
+
+      /* ── Visual Score Meter ── */
+      .meter-section {
+        margin-bottom: 24px;
+      }
+
+      .meter-track {
+        height: 10px;
+        background: var(--meter-track);
+        border-radius: 999px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .meter-bar {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .meter-bar.low {
+        background: linear-gradient(90deg, #10b981, #34d399);
+      }
+
+      .meter-bar.review {
+        background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      }
+
+      .meter-bar.high {
+        background: linear-gradient(90deg, #f43f5e, #fb7185);
+      }
+
+      .meter-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      /* ── Stats Grid ── */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        background: var(--stat-card-bg);
+        border: 1px solid var(--stat-card-border);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .stat-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        letter-spacing: 0.04em;
+        margin-bottom: 4px;
+      }
+
+      .stat-val {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+      }
+
+      /* ── Details & Disclaimer Note ── */
+      .notice-card {
+        background: var(--notice-bg);
+        border: 1px solid var(--notice-border);
+        border-radius: 14px;
+        padding: 16px;
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .notice-card p + p {
+        margin-top: 8px;
+      }
+
+      .notice-highlight {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      /* ── Loading Overlay ── */
       .loading-overlay {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(15, 23, 42, 0.6);
+        inset: 0;
+        background: rgba(8, 12, 20, 0.75);
+        backdrop-filter: blur(6px);
         display: none;
         align-items: center;
         justify-content: center;
-        z-index: 1000;
-        backdrop-filter: blur(4px);
+        z-index: 9999;
       }
 
       .loading-overlay.active {
         display: flex;
       }
 
-      .loading-spinner {
-        background: var(--spinner-card-bg);
-        border-radius: 24px;
-        padding: 36px 44px;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+      .loading-card {
+        background: var(--card-bg);
         border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 36px 48px;
         text-align: center;
-        max-width: 420px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
       }
 
-      .loading-text {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-main);
-        margin-bottom: 8px;
-      }
-
-      .animated-loader {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 20px;
-        background: conic-gradient(
-          from 0deg,
-          #2563eb 0deg,
-          #0ea5e9 90deg,
-          #e0f2fe 180deg,
-          #2563eb 360deg
-        );
+      .spinner-circle {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
         border-radius: 50%;
-        animation: spin 1.2s linear infinite;
+        background: conic-gradient(from 0deg, transparent 0%, #6366f1 70%, #0ea5e9 100%);
+        animation: spin 1s linear infinite;
         position: relative;
       }
 
-      .animated-loader::after {
+      .spinner-circle::after {
         content: "";
         position: absolute;
-        top: 8px;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-        background: var(--spinner-card-bg);
+        inset: 6px;
         border-radius: 50%;
+        background: var(--card-bg);
       }
 
       @keyframes spin {
-        from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
+      }
+
+      .loading-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .loading-card p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
       }
     </style>
   </head>
   <body>
+    <!-- ── Loading Overlay ── -->
     <div class="loading-overlay" id="loadingOverlay">
-      <div class="loading-spinner">
-        <div class="animated-loader"></div>
-        <div class="loading-text">Analyzing your content...</div>
+      <div class="loading-card">
+        <div class="spinner-circle"></div>
+        <h3>Analyzing Writing Patterns</h3>
+        <p>Evaluating stylistic markers & calibrated probabilities...</p>
       </div>
     </div>
 
-    <div class="page">
-      <header class="topbar">
-        <div class="brand">
-          <span class="brand-icon">🔍</span>
-          <span>AI Content <span class="accent">Detector</span></span>
+    <div class="container">
+      <!-- ── Navbar ── -->
+      <nav class="navbar">
+        <a href="#" class="brand">
+          <div class="brand-icon">⚡</div>
+          <span class="brand-title">AI Detector</span>
+          <span class="brand-badge">Calibrated</span>
+        </a>
+        <div class="nav-actions">
+          <button class="theme-btn" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
         </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-          <span id="themeIcon">🌙</span>
-        </button>
-      </header>
+      </nav>
 
+      <!-- ── Hero ── -->
       <section class="hero">
-        <h1>Detect AI-Generated Text</h1>
-        <p>Calibrated AI detection with out-of-fold scoring and fail-safe length verification.</p>
+        <h1>Detect AI Content with <span class="hero-gradient">Confidence</span></h1>
+        <p>Calibrated out-of-fold scoring designed to eliminate false positives on student and human writing.</p>
       </section>
 
-      <main class="panel">
-        <div class="panel-card">
-          <h2>Analyze Text or Document</h2>
-          <p class="subtitle">Enter any assignment excerpt (minimum 50 words) or upload a file for calibrated analysis.</p>
-          <div class="form-shell">
-            <textarea id="textInput" placeholder="Paste essay or assignment text here (50+ words recommended)..."></textarea>
-            
-            <div class="message-box info">
-              <strong>📁 File Upload:</strong> You can also upload PDF, DOCX, or TXT files (up to 10MB) for analysis.
+      <!-- ── Main Workspace Card ── -->
+      <main class="workspace-card">
+        <!-- ── Segmented Tabs ── -->
+        <div class="tabs-header">
+          <button class="tab-btn active" id="tabTextBtn" onclick="switchTab('text')">
+            <span>✍️</span> Paste Text
+          </button>
+          <button class="tab-btn" id="tabFileBtn" onclick="switchTab('file')">
+            <span>📄</span> Upload Document
+          </button>
+        </div>
+
+        <!-- ── Tab 1: Paste Text ── -->
+        <div class="tab-panel active" id="textPanel">
+          <div class="editor-wrapper">
+            <textarea 
+              id="textInput" 
+              class="text-input" 
+              placeholder="Paste assignment, essay excerpt, or article here to analyze..."
+              oninput="handleTextInput()"
+            ></textarea>
+          </div>
+          <div class="editor-footer">
+            <div class="word-badge" id="wordCountBadge">
+              <span id="wordStatusIcon">ℹ️</span>
+              <span id="wordStatusText">0 words (Minimum 50 required)</span>
             </div>
+            <button class="clear-btn" onclick="clearText()">Clear text</button>
+          </div>
+        </div>
 
-            <div class="file-upload-wrapper">
-              <label class="file-upload-label" for="fileInput">
-                <span>📄 Choose File (PDF, DOCX, TXT)</span>
-              </label>
-              <input id="fileInput" type="file" accept=".pdf,.docx,.txt" />
-              <div class="file-name-display" id="fileName"></div>
-            </div>
+        <!-- ── Tab 2: Upload File ── -->
+        <div class="tab-panel" id="filePanel">
+          <div class="dropzone" id="dropzone" onclick="document.getElementById('fileInput').click()">
+            <div class="dropzone-icon">📁</div>
+            <h3>Drop your file here or browse</h3>
+            <p>Supports PDF, DOCX, and TXT files (up to 10MB)</p>
+            <input type="file" id="fileInput" accept=".pdf,.docx,.txt" onchange="handleFileSelected(this.files)" />
+          </div>
 
-            <div id="messageBox" style="display:none;"></div>
-
-            <div class="cta-row">
-              <button class="btn-primary" id="analyzeBtn" onclick="runAnalysis()">Analyze Content</button>
-              <div class="score-badge" id="miniScore">Score: Ready</div>
-            </div>
-
-            <div class="result-card" id="result" style="display:none">
-              <h3>Result: <span id="riskLabel"></span></h3>
-              <div class="result-details">
-                <span class="detail-pill" id="scoreBadge"></span>
-                <span class="detail-pill" id="wordCount"></span>
-                <span class="detail-pill" id="sentenceCount"></span>
+          <div class="file-preview-card" id="filePreview">
+            <div class="file-info">
+              <span class="file-icon" id="fileIcon">📄</span>
+              <div>
+                <div class="file-name" id="fileName">document.pdf</div>
+                <div class="file-meta" id="fileSize">0 KB</div>
               </div>
-              <div style="margin-top:12px; color:var(--text-muted); font-size:0.95rem; line-height:1.6;" id="markerList"></div>
             </div>
+            <button class="remove-file-btn" title="Remove file" onclick="removeFile()">✕</button>
+          </div>
+        </div>
+
+        <!-- ── Alert Message Box ── -->
+        <div class="alert-box" id="alertBox"></div>
+
+        <!-- ── Action Trigger ── -->
+        <div class="action-row">
+          <button class="analyze-btn" id="analyzeBtn" onclick="runAnalysis()">
+            <span>⚡ Analyze Content</span>
+          </button>
+        </div>
+
+        <!-- ── Results Section ── -->
+        <div class="result-container" id="resultContainer">
+          <div class="result-header">
+            <div class="risk-pill" id="riskPill">
+              <span id="riskIcon">🛡️</span>
+              <span id="riskLabel">Low Risk — Likely Human</span>
+            </div>
+            <div class="score-display-value" id="scoreDisplay">--</div>
+          </div>
+
+          <!-- ── Visual Score Meter ── -->
+          <div class="meter-section" id="meterSection">
+            <div class="meter-track">
+              <div class="meter-bar" id="meterBar"></div>
+            </div>
+            <div class="meter-labels">
+              <span>0% Human</span>
+              <span>50% Needs Review</span>
+              <span>100% Likely AI</span>
+            </div>
+          </div>
+
+          <!-- ── Stats Grid ── -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">AI Probability</div>
+              <div class="stat-val" id="statScore">--</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Word Count</div>
+              <div class="stat-val" id="statWords">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Sentence Count</div>
+              <div class="stat-val" id="statSentences">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Engine</div>
+              <div class="stat-val" id="statEngine" style="font-size: 0.95rem;">Calibrated</div>
+            </div>
+          </div>
+
+          <!-- ── Context & Notice Box ── -->
+          <div class="notice-card" id="noticeCard">
+            <p id="markerNotice"></p>
+            <p id="disclaimerNotice" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
+              💡 <strong>Reviewer Note:</strong> AI detection scores represent calibrated statistical probability, not absolute proof. Scores should be evaluated alongside academic context.
+            </p>
           </div>
         </div>
       </main>
     </div>
 
     <script>
+      // ── Theme Switcher ──
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
 
@@ -546,12 +907,10 @@
         if (isDark) {
           document.documentElement.classList.add("dark-mode");
           themeIcon.textContent = "☀️";
-          themeToggle.setAttribute("aria-label", "Switch to light mode");
           themeToggle.setAttribute("title", "Switch to light mode");
         } else {
           document.documentElement.classList.remove("dark-mode");
           themeIcon.textContent = "🌙";
-          themeToggle.setAttribute("aria-label", "Switch to dark mode");
           themeToggle.setAttribute("title", "Switch to dark mode");
         }
       }
@@ -563,96 +922,162 @@
         setTheme(false);
       }
 
-      themeToggle.addEventListener("click", function() {
+      themeToggle.addEventListener("click", () => {
         const isDark = document.documentElement.classList.toggle("dark-mode");
         localStorage.setItem("theme", isDark ? "dark" : "light");
         setTheme(isDark);
       });
 
-      const SUPPORTED_EXTENSIONS = [".pdf", ".docx", ".txt"];
+      // ── Tab Navigation ──
+      let activeTab = "text";
 
-      function showMessage(type, text) {
-        const messageBox = document.getElementById("messageBox");
-        messageBox.className = `message-box ${type}`;
-        messageBox.textContent = text;
-        messageBox.style.display = "block";
+      function switchTab(tab) {
+        activeTab = tab;
+        const textBtn = document.getElementById("tabTextBtn");
+        const fileBtn = document.getElementById("tabFileBtn");
+        const textPanel = document.getElementById("textPanel");
+        const filePanel = document.getElementById("filePanel");
+
+        if (tab === "text") {
+          textBtn.classList.add("active");
+          fileBtn.classList.remove("active");
+          textPanel.classList.add("active");
+          filePanel.classList.remove("active");
+        } else {
+          fileBtn.classList.add("active");
+          textBtn.classList.remove("active");
+          filePanel.classList.add("active");
+          textPanel.classList.remove("active");
+        }
+        hideAlert();
       }
 
-      function hideMessage() {
-        const messageBox = document.getElementById("messageBox");
-        messageBox.style.display = "none";
+      // ── Live Word Count & Helpers ──
+      function handleTextInput() {
+        const text = document.getElementById("textInput").value || "";
+        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+        const badge = document.getElementById("wordCountBadge");
+        const icon = document.getElementById("wordStatusIcon");
+        const statusText = document.getElementById("wordStatusText");
+
+        if (words === 0) {
+          badge.className = "word-badge";
+          icon.textContent = "ℹ️";
+          statusText.textContent = "0 words (Minimum 50 required)";
+        } else if (words < 50) {
+          badge.className = "word-badge warning";
+          icon.textContent = "⚠️";
+          statusText.textContent = `${words}/50 words (Need ${50 - words} more)`;
+        } else {
+          badge.className = "word-badge ready";
+          icon.textContent = "✅";
+          statusText.textContent = `${words} words (Ready to analyze)`;
+        }
       }
 
-      function showLoading() {
-        const loadingOverlay = document.getElementById("loadingOverlay");
-        loadingOverlay.classList.add("active");
+      function clearText() {
+        document.getElementById("textInput").value = "";
+        handleTextInput();
+        hideAlert();
       }
 
-      function hideLoading() {
-        const loadingOverlay = document.getElementById("loadingOverlay");
-        loadingOverlay.classList.remove("active");
-      }
+      // ── Drag & Drop File Handling ──
+      const dropzone = document.getElementById("dropzone");
+      let selectedFile = null;
 
-      document.getElementById("fileInput").addEventListener("change", function() {
-        const fileNameDisplay = document.getElementById("fileName");
-        if (this.files[0]) {
-          const fileName = this.files[0].name;
-          const fileExt = "." + fileName.split(".").pop().toLowerCase();
-          if (!SUPPORTED_EXTENSIONS.includes(fileExt)) {
-            showMessage("warning", `File extension "${fileExt}" is not supported. Supported formats: PDF, DOCX, TXT`);
-            fileNameDisplay.classList.remove("show");
-          } else {
-            showMessage("success", `File selected: ${fileName}`);
-            fileNameDisplay.textContent = `✅ ${fileName}`;
-            fileNameDisplay.classList.add("show");
-          }
+      ["dragenter", "dragover"].forEach(event => {
+        dropzone.addEventListener(event, (e) => {
+          e.preventDefault();
+          dropzone.classList.add("dragover");
+        });
+      });
+
+      ["dragleave", "drop"].forEach(event => {
+        dropzone.addEventListener(event, (e) => {
+          e.preventDefault();
+          dropzone.classList.remove("dragover");
+        });
+      });
+
+      dropzone.addEventListener("drop", (e) => {
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFileSelected(e.dataTransfer.files);
         }
       });
 
-      async function runAnalysis() {
-        const text = document.getElementById("textInput").value || "";
-        const fileInput = document.getElementById("fileInput");
-        const file = fileInput.files[0];
+      function handleFileSelected(files) {
+        if (!files || !files[0]) return;
+        const file = files[0];
+        const ext = "." + file.name.split(".").pop().toLowerCase();
+        const validExts = [".pdf", ".docx", ".txt"];
 
-        if (!text.trim() && !file) {
-          showMessage("info", "📄 Please either paste text in the textarea above or upload a file (PDF, DOCX, or TXT).");
+        if (!validExts.includes(ext)) {
+          showAlert("warning", `Unsupported format "${ext}". Please choose a PDF, DOCX, or TXT file.`);
           return;
         }
 
-        if (file) {
-          const fileName = file.name;
-          const fileExt = "." + fileName.split(".").pop().toLowerCase();
-          if (!SUPPORTED_EXTENSIONS.includes(fileExt)) {
-            showMessage("warning", `File extension "${fileExt}" is not supported. Please use PDF, DOCX, or TXT files.`);
-            return;
-          }
+        if (file.size > 10 * 1024 * 1024) {
+          showAlert("warning", "File is larger than 10MB limit. Please upload a smaller file.");
+          return;
         }
 
-        hideMessage();
-        showLoading();
+        selectedFile = file;
+        document.getElementById("fileName").textContent = file.name;
+        document.getElementById("fileSize").textContent = formatFileSize(file.size);
+        document.getElementById("filePreview").classList.add("show");
+        document.getElementById("dropzone").style.display = "none";
+        hideAlert();
+      }
 
-        if (file) {
-          const formData = new FormData();
-          formData.append("file", file);
+      function removeFile() {
+        selectedFile = null;
+        document.getElementById("fileInput").value = "";
+        document.getElementById("filePreview").classList.remove("show");
+        document.getElementById("dropzone").style.display = "block";
+      }
 
-          try {
-            const response = await fetch("/api/analyze-file", {
-              method: "POST",
-              body: formData
-            });
+      function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + " B";
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+        return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+      }
 
-            const data = await response.json();
-            if (!response.ok) {
-              throw new Error(data.error || "File analysis failed");
-            }
+      // ── Alerts & Loading ──
+      function showAlert(type, message) {
+        const box = document.getElementById("alertBox");
+        box.className = `alert-box show ${type}`;
+        box.innerHTML = `<span>${type === "warning" ? "⚠️" : "ℹ️"}</span> <span>${message}</span>`;
+      }
 
-            hideLoading();
-            renderResult(data.result);
-          } catch (error) {
-            hideLoading();
-            showMessage("warning", error.message || "Unable to analyze file.");
-          }
+      function hideAlert() {
+        const box = document.getElementById("alertBox");
+        box.className = "alert-box";
+      }
+
+      function setLoading(isLoading) {
+        const overlay = document.getElementById("loadingOverlay");
+        const btn = document.getElementById("analyzeBtn");
+        if (isLoading) {
+          overlay.classList.add("active");
+          btn.disabled = true;
         } else {
+          overlay.classList.remove("active");
+          btn.disabled = false;
+        }
+      }
+
+      // ── API Submission & Analysis ──
+      async function runAnalysis() {
+        hideAlert();
+
+        if (activeTab === "text") {
+          const text = document.getElementById("textInput").value || "";
+          if (!text.trim()) {
+            showAlert("warning", "Please paste some text into the editor first.");
+            return;
+          }
+
+          setLoading(true);
           try {
             const response = await fetch("/api/analyze", {
               method: "POST",
@@ -661,73 +1086,117 @@
             });
 
             const data = await response.json();
+            setLoading(false);
+
             if (!response.ok) {
               throw new Error(data.error || "Analysis failed");
             }
+            renderResults(data.result);
+          } catch (err) {
+            setLoading(false);
+            showAlert("warning", err.message || "Failed to connect to detection service.");
+          }
+        } else {
+          if (!selectedFile) {
+            showAlert("warning", "Please choose or drop a document to analyze.");
+            return;
+          }
 
-            hideLoading();
-            renderResult(data.result);
-          } catch (error) {
-            hideLoading();
-            showMessage("warning", error.message || "Unable to analyze text.");
+          setLoading(true);
+          const formData = new FormData();
+          formData.append("file", selectedFile);
+
+          try {
+            const response = await fetch("/api/analyze-file", {
+              method: "POST",
+              body: formData
+            });
+
+            const data = await response.json();
+            setLoading(false);
+
+            if (!response.ok) {
+              throw new Error(data.error || "File analysis failed");
+            }
+            renderResults(data.result);
+          } catch (err) {
+            setLoading(false);
+            showAlert("warning", err.message || "Failed to analyze document.");
           }
         }
       }
 
-      const LABEL_CLASSES = {
-        "High risk": "label-high",
-        "Needs review": "label-medium",
-        "Inconclusive": "label-inconclusive",
-        "Low risk": "label-low"
-      };
+      // ── Result Rendering ──
+      function renderResults(result) {
+        const container = document.getElementById("resultContainer");
+        const riskPill = document.getElementById("riskPill");
+        const riskIcon = document.getElementById("riskIcon");
+        const riskLabel = document.getElementById("riskLabel");
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        const meterBar = document.getElementById("meterBar");
+        const meterSection = document.getElementById("meterSection");
+        const statScore = document.getElementById("statScore");
+        const statWords = document.getElementById("statWords");
+        const statSentences = document.getElementById("statSentences");
+        const statEngine = document.getElementById("statEngine");
+        const markerNotice = document.getElementById("markerNotice");
 
-      function renderResult(result) {
         const details = result.details || {};
         const label = result.label || "Inconclusive";
         const hasScore = typeof result.score === "number";
-        const scoreText = hasScore ? `${result.score}/100` : "Inconclusive";
 
-        const notes = [];
-        if (details.abstained && details.reason) {
-          notes.push(`Not scored: ${details.reason}.`);
-        }
-        if (details.advisory) {
-          notes.push("Advisory only — this fallback engine is uncalibrated and cannot flag High risk.");
-        }
-        if (hasScore) {
+        statWords.textContent = (details.word_count || 0).toLocaleString();
+        statSentences.textContent = (details.sentence_count || 0).toLocaleString();
+
+        let engineName = "Calibrated Model";
+        if (details.engine === "transformer") engineName = "Transformer";
+        if (details.engine === "heuristic") engineName = "Heuristic Fallback";
+        if (details.engine === "none") engineName = "Length Guard";
+        statEngine.textContent = engineName;
+
+        if (!hasScore || label === "Inconclusive") {
+          riskPill.className = "risk-pill inconclusive";
+          riskIcon.textContent = "ℹ️";
+          riskLabel.textContent = "Inconclusive (Text Too Short)";
+          scoreDisplay.textContent = "N/A";
+          statScore.textContent = "Not Scored";
+          meterSection.style.display = "none";
+          markerNotice.innerHTML = `<strong>⚠️ Abstention:</strong> ${details.reason || "Input does not contain sufficient text for calibrated classification (50 words minimum required)."}`;
+        } else {
+          meterSection.style.display = "block";
+          const score = result.score;
+          scoreDisplay.textContent = `${score}%`;
+          statScore.textContent = `${score}%`;
+
+          meterBar.style.width = `${Math.min(100, Math.max(2, score))}%`;
+
+          if (label === "Low risk") {
+            riskPill.className = "risk-pill low";
+            riskIcon.textContent = "🛡️";
+            riskLabel.textContent = "Low Risk — Likely Human Written";
+            meterBar.className = "meter-bar low";
+          } else if (label === "Needs review") {
+            riskPill.className = "risk-pill review";
+            riskIcon.textContent = "⚠️";
+            riskLabel.textContent = "Needs Review — Mixed / Edited Style";
+            meterBar.className = "meter-bar review";
+          } else {
+            riskPill.className = "risk-pill high";
+            riskIcon.textContent = "🚨";
+            riskLabel.textContent = "High Risk — Likely AI Generated";
+            meterBar.className = "meter-bar high";
+          }
+
           const markerHits = details.marker_hits || [];
-          notes.push(markerHits.length ? `Matched markers: ${markerHits.join(", ")}` : "Matched markers: None");
+          if (markerHits.length > 0) {
+            markerNotice.innerHTML = `<strong>Matched Stylistic Markers:</strong> <span style="font-family:var(--font-mono); font-size:0.82rem;">${markerHits.join(", ")}</span>`;
+          } else {
+            markerNotice.innerHTML = `<strong>Stylistic Markers:</strong> None detected. Text shows natural human linguistic variation.`;
+          }
         }
-        notes.push("Scores are calibrated probability estimates for human review, not automated proof.");
 
-        showResult(
-          scoreText,
-          label,
-          notes.join(" "),
-          details.word_count || 0,
-          details.sentence_count || 0,
-          LABEL_CLASSES[label] || "label-inconclusive"
-        );
-      }
-
-      function showResult(scoreText, label, message, wordCount, sentenceCount, labelClass) {
-        const resultBox = document.getElementById("result");
-        const riskLabel = document.getElementById("riskLabel");
-        const scoreBadge = document.getElementById("scoreBadge");
-        const wordCountEl = document.getElementById("wordCount");
-        const sentenceCountEl = document.getElementById("sentenceCount");
-        const markerList = document.getElementById("markerList");
-        const miniScore = document.getElementById("miniScore");
-
-        resultBox.style.display = "grid";
-        riskLabel.textContent = label;
-        riskLabel.className = labelClass;
-        scoreBadge.textContent = `Score: ${scoreText}`;
-        wordCountEl.textContent = `Words: ${wordCount}`;
-        sentenceCountEl.textContent = `Sentences: ${sentenceCount}`;
-        markerList.textContent = message;
-        miniScore.textContent = `Score: ${scoreText}`;
-        hideMessage();
+        container.classList.add("show");
+        container.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     </script>
   </body>
