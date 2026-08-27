@@ -2,7 +2,7 @@
 
 Why this exists
 ---------------
-`model.predict_proba` on a 285-sample TF-IDF + logistic-regression pipeline is
+`model.predict_proba` on a 510-sample TF-IDF + logistic-regression pipeline is
 *not* a calibrated probability. Reading it as one produced the original bug:
 `P(ai) + P(hybrid)` never drops far below 0.4 for genuine human writing, so
 every human author scored ~50/100 and no submission could ever come back clean.
@@ -139,7 +139,7 @@ def calibrate() -> dict:
         y, oof_pred, average="macro", zero_division=0
     )
     # Per-fold spread, straight from the out-of-fold predictions. This is the
-    # number that shows how unstable a 285-sample estimate really is.
+    # number that shows how unstable a 510-sample estimate really is.
     fold_f1 = [
         round(
             float(f1_score(y[test], oof_pred[test], average="macro", zero_division=0)),
@@ -187,7 +187,7 @@ def calibrate() -> dict:
             ),
         },
         "caveats": [
-            "Calibrated on 285 balanced multi-domain academic samples (median ~21 words). Treat every "
+            "Calibrated on 510 balanced multi-domain academic samples (median ~21 words). Treat every "
             "number here as indicative, not authoritative.",
             "Calibration is fitted on out-of-fold predictions from pipelines "
             "refit per fold, so it approximates - but is not identical to - "
