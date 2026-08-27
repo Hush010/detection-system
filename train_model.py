@@ -40,7 +40,7 @@ def build_pipeline():
     """
     return make_pipeline(
         TfidfVectorizer(ngram_range=(1, 2), min_df=1),
-        LogisticRegression(max_iter=1000),
+        LogisticRegression(class_weight="balanced", max_iter=1000),
     )
 
 
@@ -67,7 +67,7 @@ def train_and_evaluate():
         "classification_report": report,
         "health_warning": (
             "These figures come from a single 18-sample hold-out split of a "
-            "252-sample multi-domain academic dataset and are not a generalisable accuracy claim. "
+            "285-sample multi-domain academic dataset and are not a generalisable accuracy claim. "
             "Swapping random_state moves them by several points. Use the "
             "out-of-fold figures in calibration.json when reporting "
             "performance."

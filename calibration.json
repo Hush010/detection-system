@@ -2,25 +2,25 @@
   "version": 1,
   "source_dataset": "dataset.json",
   "sklearn_version": "1.9.0",
-  "n_samples": 252,
+  "n_samples": 285,
   "cv_folds": 6,
   "platt": {
-    "a": 39.036343931085014,
-    "b": -23.46179205875592,
+    "a": 46.78840903987666,
+    "b": -30.250079899379845,
     "C": 1000.0,
     "brier_by_C": {
-      "1.0": 0.16834334078336835,
-      "3.0": 0.1250903427206036,
-      "10.0": 0.09317473218470337,
-      "30.0": 0.08003004276505452,
-      "100.0": 0.07487322287549567,
-      "300.0": 0.07348680084982354,
-      "1000.0": 0.07304365487742256
+      "1.0": 0.1731393180638419,
+      "3.0": 0.13239064427120187,
+      "10.0": 0.09709002392951335,
+      "30.0": 0.08172839508252112,
+      "100.0": 0.07568161105232066,
+      "300.0": 0.074148559504086,
+      "1000.0": 0.07372861421478835
     }
   },
   "bands": {
-    "review": 31.2,
-    "high": 70.2
+    "review": 44.5,
+    "high": 75.2
   },
   "abstain": {
     "min_words": 50
@@ -30,29 +30,29 @@
     "needs_review": 0.2
   },
   "out_of_fold_metrics": {
-    "macro_precision": 0.853,
-    "macro_recall": 0.7316,
-    "macro_f1": 0.7126,
-    "accuracy": 0.7937,
+    "macro_precision": 0.8408,
+    "macro_recall": 0.8351,
+    "macro_f1": 0.8318,
+    "accuracy": 0.8351,
     "per_fold_macro_f1": [
-      0.7364,
-      0.5592,
-      0.7359,
-      0.6861,
-      0.685,
-      0.8109
+      0.8732,
+      0.8522,
+      0.7832,
+      0.7801,
+      0.8306,
+      0.8655
     ],
-    "fold_macro_f1_spread": 0.2517
+    "fold_macro_f1_spread": 0.0931
   },
   "separability": {
-    "auc_human_vs_generated": 0.9595,
+    "auc_human_vs_generated": 0.9589,
     "human_score_median": 11.9,
-    "human_score_p95": 70.2,
-    "generated_score_median": 97.7,
-    "generated_score_p05": 35.7
+    "human_score_p95": 75.2,
+    "generated_score_median": 97.1,
+    "generated_score_p05": 39.9
   },
   "caveats": [
-    "Calibrated on 252 diverse academic samples (median ~21 words). Treat every number here as indicative, not authoritative.",
+    "Calibrated on 285 balanced multi-domain academic samples (median ~21 words). Treat every number here as indicative, not authoritative.",
     "Calibration is fitted on out-of-fold predictions from pipelines refit per fold, so it approximates - but is not identical to - the behaviour of the single shipped model.",
     "Scores are evidence for a human reviewer to weigh, never grounds for an automated accusation."
   ]

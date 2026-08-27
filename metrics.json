@@ -1,41 +1,41 @@
 {
-  "precision": 0.8281,
-  "recall": 0.7778,
-  "f1_score": 0.7304,
+  "precision": 0.8075,
+  "recall": 0.8056,
+  "f1_score": 0.8031,
   "classification_report": {
     "ai": {
-      "precision": 0.8518518518518519,
+      "precision": 0.9583333333333334,
       "recall": 0.9583333333333334,
-      "f1-score": 0.9019607843137255,
+      "f1-score": 0.9583333333333334,
       "support": 24.0
     },
     "human": {
-      "precision": 0.696969696969697,
-      "recall": 0.9583333333333334,
-      "f1-score": 0.8070175438596491,
+      "precision": 0.75,
+      "recall": 0.625,
+      "f1-score": 0.6818181818181818,
       "support": 24.0
     },
     "hybrid": {
-      "precision": 1.0,
-      "recall": 0.2,
-      "f1-score": 0.3333333333333333,
-      "support": 15.0
+      "precision": 0.7142857142857143,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.7692307692307693,
+      "support": 24.0
     },
-    "accuracy": 0.7777777777777778,
+    "accuracy": 0.8055555555555556,
     "macro avg": {
-      "precision": 0.8496071829405163,
-      "recall": 0.7055555555555556,
-      "f1-score": 0.6807705538355693,
-      "support": 63.0
+      "precision": 0.8075396825396827,
+      "recall": 0.8055555555555557,
+      "f1-score": 0.8031274281274281,
+      "support": 72.0
     },
     "weighted avg": {
-      "precision": 0.8281224947891614,
-      "recall": 0.7777777777777778,
-      "f1-score": 0.7304044424787459,
-      "support": 63.0
+      "precision": 0.8075396825396824,
+      "recall": 0.8055555555555556,
+      "f1-score": 0.8031274281274281,
+      "support": 72.0
     }
   },
-  "health_warning": "These figures come from a single 18-sample hold-out split of a 252-sample multi-domain academic dataset and are not a generalisable accuracy claim. Swapping random_state moves them by several points. Use the out-of-fold figures in calibration.json when reporting performance.",
-  "n_train": 189,
-  "n_test": 63
+  "health_warning": "These figures come from a single 18-sample hold-out split of a 285-sample multi-domain academic dataset and are not a generalisable accuracy claim. Swapping random_state moves them by several points. Use the out-of-fold figures in calibration.json when reporting performance.",
+  "n_train": 213,
+  "n_test": 72
 }

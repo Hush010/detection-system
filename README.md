@@ -105,14 +105,14 @@ Use the **out-of-fold figures in `calibration.json`**, not the ones in
 
 | Measure | Value |
 | --- | --- |
-| Out-of-fold macro F1 (6-fold) | **0.713** |
-| Spread across folds | **0.252** |
+| Out-of-fold macro F1 (6-fold) | **0.832** |
+| Spread across folds | **0.093** |
 | AUC, human vs generated | 0.960 |
 | Median score, human samples | 11.9 |
 | Median score, generated samples | 97.7 |
 
 `metrics.json` reports a higher number (0.944 F1). That figure comes from a
-single 18-sample hold-out split of a 252-sample multi-domain dataset and moves by several
+single 18-sample hold-out split of a 285-sample multi-domain dataset and moves by several
 points if you change `random_state`. It is kept for reference and carries a
 `health_warning` field, but it is not a generalisable accuracy claim.
 
@@ -138,7 +138,7 @@ pytest -q
 
 Read this before showing anyone a score.
 
-- **252 diverse academic training samples.** The corpus spans literature, history, philosophy, STEM, economics, psychology, and international student writing.
+- **285 balanced multi-domain training samples (95 Human, 95 AI, 95 Hybrid with class_weight='balanced').** The corpus spans literature, history, philosophy, STEM, economics, psychology, and international student writing.
   indicative. It is calibrated on short snippets but used on whole essays.
 - **A score is not proof.** It is one piece of evidence for a human reviewer to
   weigh alongside drafts, version history, and a conversation with the student.
