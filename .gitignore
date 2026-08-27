@@ -10,3 +10,8 @@ build/
 .DS_Store
 .env
 *.log
+
+# Private University Project Documentation (Do NOT publish)
+FINAL_YEAR_PROJECT_REPORT_UI.md
+*PROJECT_REPORT*
+*.docx
